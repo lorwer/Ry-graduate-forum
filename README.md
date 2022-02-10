@@ -117,7 +117,7 @@ RuoYi-Vue是一款基于SpringBoot+Vue的前后端分离极速后台开发框架
     </tr>
 	<tr>
         <td><img src="ruoyi-ui/public/systemImg/分类管理.png"/></td>
-        <td><img src="public/systemImg/标签管理.png"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/标签管理.png"/></td>
     </tr>
 	<tr>
         <td><img src="ruoyi-ui/public/systemImg/留言管理.png"/></td>
