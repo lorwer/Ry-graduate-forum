@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.cms.tag.mapper.CmsTagMapper">
+    
+    <resultMap type="CmsTag" id="CmsTagResult">
+        <result property="tagId"    column="tag_id"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="tagName"    column="tag_name"    />
+    </resultMap>
+
+    <sql id="selectCmsTagVo">
+        select tag_id, create_by, create_time, update_by, update_time, tag_name from cms_tag
+    </sql>
+
+    <select id="selectCmsTagList" parameterType="CmsTag" resultMap="CmsTagResult">
+        <include refid="selectCmsTagVo"/>
+        <where>  
+            <if test="tagName != null  and tagName != ''"> and tag_name like concat('%', #{tagName}, '%')</if>
+            <if test="createBy != null  and createBy != ''"> and create_by = #{createBy}</if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+    
+    <select id="selectCmsTagByTagId" parameterType="Long" resultMap="CmsTagResult">
+        <include refid="selectCmsTagVo"/>
+        where tag_id = #{tagId}
+    </select>
+    <select id="selectCmsTagListByTagName" parameterType="String" resultMap="CmsTagResult">
+        <include refid="selectCmsTagVo"/>
+        where tag_name = #{tagName}
+    </select>
+
+    <insert id="insertCmsTag" parameterType="CmsTag" useGeneratedKeys="true" keyProperty="tagId">
+        insert into cms_tag
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="tagName != null and tagName != ''">tag_name,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="tagName != null and tagName != ''">#{tagName},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCmsTag" parameterType="CmsTag">
+        update cms_tag
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="tagName != null and tagName != ''">tag_name = #{tagName},</if>
+        </trim>
+        where tag_id = #{tagId}
+    </update>
+
+    <delete id="deleteCmsTagByTagId" parameterType="Long">
+        delete from cms_tag where tag_id = #{tagId}
+    </delete>
+
+    <delete id="deleteCmsTagByTagIds" parameterType="String">
+        delete from cms_tag where tag_id in 
+        <foreach item="tagId" collection="array" open="(" separator="," close=")">
+            #{tagId}
+        </foreach>
+    </delete>
+</mapper>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.cms.type.mapper.CmsTypeMapper">
+    
+    <resultMap type="CmsType" id="CmsTypeResult">
+        <result property="typeId"    column="type_id"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="typeName"    column="type_name"    />
+        <result property="typePic"    column="type_pic"    />
+    </resultMap>
+
+    <sql id="selectCmsTypeVo">
+        select type_id, create_by, create_time, update_by, update_time, type_name, type_pic from cms_type
+    </sql>
+
+    <select id="selectCmsTypeList" parameterType="CmsType" resultMap="CmsTypeResult">
+        <include refid="selectCmsTypeVo"/>
+        <where>  
+            <if test="typeName != null  and typeName != ''"> and type_name like concat('%', #{typeName}, '%')</if>
+            <if test="typePic != null  and typePic != ''"> and type_pic = #{typePic}</if>
+            <if test="createBy != null  and createBy != ''"> and create_by = #{createBy}</if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+    
+    <select id="selectCmsTypeByTypeId" parameterType="Long" resultMap="CmsTypeResult">
+        <include refid="selectCmsTypeVo"/>
+        where type_id = #{typeId}
+    </select>
+    <select id="selectCmsTypeListByTypeName" parameterType="String" resultMap="CmsTypeResult">
+        <include refid="selectCmsTypeVo"/>
+        where type_name = #{typeName}
+    </select>
+
+    <insert id="insertCmsType" parameterType="CmsType" useGeneratedKeys="true" keyProperty="typeId">
+        insert into cms_type
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="typeName != null and typeName != ''">type_name,</if>
+            <if test="typePic != null">type_pic,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="typeName != null and typeName != ''">#{typeName},</if>
+            <if test="typePic != null">#{typePic},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCmsType" parameterType="CmsType">
+        update cms_type
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="typeName != null and typeName != ''">type_name = #{typeName},</if>
+            <if test="typePic != null">type_pic = #{typePic},</if>
+        </trim>
+        where type_id = #{typeId}
+    </update>
+
+    <delete id="deleteCmsTypeByTypeId" parameterType="Long">
+        delete from cms_type where type_id = #{typeId}
+    </delete>
+
+    <delete id="deleteCmsTypeByTypeIds" parameterType="String">
+        delete from cms_type where type_id in 
+        <foreach item="typeId" collection="array" open="(" separator="," close=")">
+            #{typeId}
+        </foreach>
+    </delete>
+</mapper>

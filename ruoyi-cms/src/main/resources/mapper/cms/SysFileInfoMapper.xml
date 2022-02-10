@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.cms.fileInfo.mapper.SysFileInfoMapper">
+    
+    <resultMap type="SysFileInfo" id="SysFileInfoResult">
+        <result property="fileId"    column="file_id"    />
+        <result property="fileOriginName"    column="file_origin_name"    />
+        <result property="fileSuffix"    column="file_suffix"    />
+        <result property="fileSizeInfo"    column="file_size_info"    />
+        <result property="fileObjectName"    column="file_object_name"    />
+        <result property="filePath"    column="file_path"    />
+        <result property="delFlag"    column="del_flag"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectSysFileInfoVo">
+        select file_id, file_origin_name, file_suffix, file_size_info, file_object_name, file_path, del_flag, create_by, create_time, update_by, update_time from sys_file_info
+    </sql>
+
+    <select id="selectSysFileInfoList" parameterType="SysFileInfo" resultMap="SysFileInfoResult">
+        <include refid="selectSysFileInfoVo"/>
+        <where>  
+            <if test="fileOriginName != null  and fileOriginName != ''"> and file_origin_name like concat('%', #{fileOriginName}, '%')</if>
+            <if test="fileSuffix != null  and fileSuffix != ''"> and file_suffix = #{fileSuffix}</if>
+            <if test="fileSizeInfo != null  and fileSizeInfo != ''"> and file_size_info = #{fileSizeInfo}</if>
+            <if test="fileObjectName != null  and fileObjectName != ''"> and file_object_name = #{fileObjectName}</if>
+            <if test="filePath != null  and filePath != ''"> and file_path = #{filePath}</if>
+            <if test="createBy != null  and createBy != ''"> and create_by = #{createBy}</if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+    
+    <select id="selectSysFileInfoByFileId" parameterType="Long" resultMap="SysFileInfoResult">
+        <include refid="selectSysFileInfoVo"/>
+        where file_id = #{fileId}
+    </select>
+    <select id="selectSysFileInfoByFileObjectName" parameterType="String" resultMap="SysFileInfoResult">
+        <include refid="selectSysFileInfoVo"/>
+        where file_object_name = #{fileObjectName}
+    </select>
+
+    <insert id="insertSysFileInfo" parameterType="SysFileInfo" useGeneratedKeys="true" keyProperty="fileId">
+        insert into sys_file_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="fileOriginName != null and fileOriginName != ''">file_origin_name,</if>
+            <if test="fileSuffix != null">file_suffix,</if>
+            <if test="fileSizeInfo != null">file_size_info,</if>
+            <if test="fileObjectName != null">file_object_name,</if>
+            <if test="filePath != null">file_path,</if>
+            <if test="delFlag != null and delFlag != ''">del_flag,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="fileOriginName != null and fileOriginName != ''">#{fileOriginName},</if>
+            <if test="fileSuffix != null">#{fileSuffix},</if>
+            <if test="fileSizeInfo != null">#{fileSizeInfo},</if>
+            <if test="fileObjectName != null">#{fileObjectName},</if>
+            <if test="filePath != null">#{filePath},</if>
+            <if test="delFlag != null and delFlag != ''">#{delFlag},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysFileInfo" parameterType="SysFileInfo">
+        update sys_file_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="fileOriginName != null and fileOriginName != ''">file_origin_name = #{fileOriginName},</if>
+            <if test="fileSuffix != null">file_suffix = #{fileSuffix},</if>
+            <if test="fileSizeInfo != null">file_size_info = #{fileSizeInfo},</if>
+            <if test="fileObjectName != null">file_object_name = #{fileObjectName},</if>
+            <if test="filePath != null">file_path = #{filePath},</if>
+            <if test="delFlag != null and delFlag != ''">del_flag = #{delFlag},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where file_id = #{fileId}
+    </update>
+
+    <delete id="deleteSysFileInfoByFileId" parameterType="Long">
+        delete from sys_file_info where file_id = #{fileId}
+    </delete>
+
+    <delete id="deleteSysFileInfoByFileIds" parameterType="String">
+        delete from sys_file_info where file_id in 
+        <foreach item="fileId" collection="array" open="(" separator="," close=")">
+            #{fileId}
+        </foreach>
+    </delete>
+    <delete id="deleteSysFileInfoByFileObjectName" parameterType="String">
+        delete from sys_file_info where file_object_name = #{fileObjectName}
+    </delete>
+</mapper>

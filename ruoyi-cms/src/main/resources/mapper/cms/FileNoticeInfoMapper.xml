@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ruoyi.cms.fileInfo.mapper.FileNoticeInfoMapper">
+    <resultMap type="FileNoticeInfo" id="FileNoticeResult">
+        <result property="fileId"       column="file_id"       />
+        <result property="noticeId"    column="notice_id"    />
+    </resultMap>
+
+    <insert id="batchFileNotice">
+        insert into sys_notice_file(file_id, notice_id) values
+        <foreach item="item" index="index" collection="list" separator=",">
+            (#{item.fileId},#{item.noticeId})
+        </foreach>
+    </insert>
+
+    <delete id="deleteFileNoticeByNoticeId" parameterType="Long">
+        delete from sys_notice_file where notice_id=#{noticeId}
+    </delete>
+
+    <delete id="deleteFileNotice" parameterType="Long">
+        delete from sys_notice_file where notice_id in
+        <foreach collection="array" item="noticeId" open="(" separator="," close=")">
+            #{noticeId}
+        </foreach>
+    </delete>
+
+    <select id="selectFileNoticeList" parameterType="Long" resultMap="FileNoticeResult">
+        select file_id, notice_id from sys_notice_file where notice_id = #{noticeId}
+    </select>
+</mapper>
