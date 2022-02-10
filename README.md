@@ -1,18 +1,64 @@
-## 平台简介
+<p align="center">
+	<img alt="logo" src="ruoyi-ui/public/favicon.ico">
+</p>
+<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">Blog</h1>
+<h4 align="center">基于RuoYi-Vue  v3.8.0平台开发的博客网站</h4>
+<p align="center">
+	<img src="ruoyi-ui/public/apistatus.svg"></a>
+</p>
 
-若依是一套全部开源的快速开发平台，毫无保留给个人及企业免费使用。
 
-* 前端采用Vue、Element UI。
-* 后端采用Spring Boot、Spring Security、Redis & Jwt。
-* 权限认证使用Jwt，支持多终端认证系统。
-* 支持加载动态权限菜单，多方式轻松权限控制。
-* 高效率开发，使用代码生成器可以一键生成前后端代码。
-* 提供了技术栈（[Vue3](https://v3.cn.vuejs.org) [Element Plus](https://element-plus.org/zh-CN) [Vite](https://cn.vitejs.dev)）版本[RuoYi-Vue3](https://github.com/yangzongzhuan/RuoYi-Vue3)，保持同步更新。
-* 提供了单应用版本[RuoYi-Vue-fast](https://github.com/yangzongzhuan/RuoYi-Vue-fast)，Oracle版本[RuoYi-Vue-Oracle](https://github.com/yangzongzhuan/RuoYi-Vue-Oracle)，保持同步更新。
-* 不分离版本，请移步[RuoYi](https://gitee.com/y_project/RuoYi)，微服务版本，请移步[RuoYi-Cloud](https://gitee.com/y_project/RuoYi-Cloud)
-* 特别鸣谢：[element](https://github.com/ElemeFE/element)，[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)，[eladmin-web](https://github.com/elunez/eladmin-web)。
-* 阿里云折扣场：[点我进入](http://aly.ruoyi.vip)，腾讯云秒杀场：[点我进入](http://txy.ruoyi.vip)&nbsp;&nbsp;
-* 阿里云优惠券：[点我领取](https://www.aliyun.com/minisite/goods?userCode=brki8iof&share_source=copy_link)，腾讯云优惠券：[点我领取](https://cloud.tencent.com/redirect.php?redirect=1025&cps_key=198c8df2ed259157187173bc7f4f32fd&from=console)&nbsp;&nbsp;
+## 介绍
+
+基于**RuoYi-Vue**前后端分离基础平台开发的**博客网站**。
+
+👍👍 感谢若依提供如此优秀的框架❤️❤️ 
+
+**RuoYi-Vue** 是一个 Java EE 企业级快速开发平台，基于经典技术组合（Spring Boot、Spring Security、MyBatis、Jwt、Vue），内置模块如：部门管理、角色用户、菜单及按钮授权、数据权限、系统参数、日志管理、代码生成等。在线定时任务配置；支持集群，支持多数据源，支持分布式事务。。
+
+## 快速了解
+
+Blog是基于RuoYi-Vue平台开发  
+RuoYi-Vue是一款基于SpringBoot+Vue的前后端分离极速后台开发框架。
+
+- RuoYi 官网地址：http://ruoyi.vip(opens new window)
+- RuoYi 在线文档：http://doc.ruoyi.vip/ruoyi-vue(opens new window)
+- RuoYi 源码下载：https://gitee.com/y_project/RuoYi-Vue(opens new window)
+- RuoYi 在线提问：https://gitee.com/y_project/RuoYi-Vue/issues(opens new window)
+- RuoYi 博客：https://www.oschina.net/p/ruoyi
+
+## 系统需求
+
+- JDK >= 1.8
+- MySQL >= 5.7
+- Maven >= 3.0
+- Node >= 12
+
+## 技术选型
+
+1、系统环境
+
+- Java EE 8
+- Servlet 3.0
+- Apache Maven 3
+
+2、主框架
+
+- Spring Boot 2.2.x
+- Spring Framework 5.2.x
+- Spring Security 5.2.x
+
+3、持久层
+
+- Apache MyBatis 3.5.x
+- Hibernate Validation 6.0.x
+- Alibaba Druid 1.2.x
+
+4、视图层
+
+- Vue 2.6.x
+- Axios 0.21.x
+- Element 2.15.x
 
 ## 内置功能
 
@@ -31,56 +77,87 @@
 13. 代码生成：前后端代码的生成（java、html、xml、sql）支持CRUD下载 。
 14. 系统接口：根据业务代码自动生成相关的api接口文档。
 15. 服务监控：监视当前系统CPU、内存、磁盘、堆栈等相关信息。
-16. 缓存监控：对系统的缓存信息查询，命令统计等。
+16. 缓存监控：对系统的缓存查询，删除、清空等操作。
 17. 在线构建器：拖动表单元素生成相应的HTML代码。
 18. 连接池监视：监视当前系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈。
 
-## 在线体验
+## 新增功能
 
-- admin/admin123  
-- 陆陆续续收到一些打赏，为了更好的体验已用于演示服务器升级。谢谢各位小伙伴。
-
-演示地址：http://vue.ruoyi.vip  
-文档地址：http://doc.ruoyi.vip
+1.  内容管理：管理博客网站所有内容。
+2.  文章管理：管理博客文章内容。
+3.  随笔管理：管理博客随笔内容。
+4.  分类管理：对博客分类的管理。
+5.  标签管理：对博客标签的管理。
+6.  留言管理：管理博客网站留言信息。
+7.  评论管理：管理博客评论信息。
+8.  文件管理：管理博客网站所有上传文件信息。
 
 ## 演示图
 
 <table>
     <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/cd1f90be5f2684f4560c9519c0f2a232ee8.jpg"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/1cbcf0e6f257c7d3a063c0e3f2ff989e4b3.jpg"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/首页.png"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/随笔.png"/></td>
     </tr>
     <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-8074972883b5ba0622e13246738ebba237a.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-9f88719cdfca9af2e58b352a20e23d43b12.png"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/留言.jpg"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/文档首页.png"/></td>
     </tr>
     <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-39bf2584ec3a529b0d5a3b70d15c9b37646.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-936ec82d1f4872e1bc980927654b6007307.png"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/文档详情.png"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/博客详情.png"/></td>
     </tr>
 	<tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-b2d62ceb95d2dd9b3fbe157bb70d26001e9.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-d67451d308b7a79ad6819723396f7c3d77a.png"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/评论.png"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/文章管理.png"/></td>
     </tr>	 
     <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/5e8c387724954459291aafd5eb52b456f53.jpg"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/644e78da53c2e92a95dfda4f76e6d117c4b.jpg"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/文章新增修改.png"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/资源列表.png"/></td>
     </tr>
 	<tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-8370a0d02977eebf6dbf854c8450293c937.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-49003ed83f60f633e7153609a53a2b644f7.png"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/分类管理.png"/></td>
+        <td><img src="public/systemImg/标签管理.png"/></td>
     </tr>
 	<tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-d4fe726319ece268d4746602c39cffc0621.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-c195234bbcd30be6927f037a6755e6ab69c.png"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/留言管理.png"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/评论管理.png"/></td>
     </tr>
-    <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/b6115bc8c31de52951982e509930b20684a.jpg"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-5e4daac0bb59612c5038448acbcef235e3a.png"/></td>
+	<tr>
+        <td><img src="ruoyi-ui/public/systemImg/文件管理.png"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/图片预览.png"/></td>
     </tr>
 </table>
 
 
-## 若依前后端分离交流群
+## 开发
 
-QQ群： [![加入QQ群](https://img.shields.io/badge/已满-937441-blue.svg)](https://jq.qq.com/?_wv=1027&k=5bVB1og) [![加入QQ群](https://img.shields.io/badge/已满-887144332-blue.svg)](https://jq.qq.com/?_wv=1027&k=5eiA4DH) [![加入QQ群](https://img.shields.io/badge/已满-180251782-blue.svg)](https://jq.qq.com/?_wv=1027&k=5AxMKlC) [![加入QQ群](https://img.shields.io/badge/已满-104180207-blue.svg)](https://jq.qq.com/?_wv=1027&k=51G72yr) [![加入QQ群](https://img.shields.io/badge/已满-186866453-blue.svg)](https://jq.qq.com/?_wv=1027&k=VvjN2nvu) [![加入QQ群](https://img.shields.io/badge/已满-201396349-blue.svg)](https://jq.qq.com/?_wv=1027&k=5vYAqA05) [![加入QQ群](https://img.shields.io/badge/已满-101456076-blue.svg)](https://jq.qq.com/?_wv=1027&k=kOIINEb5) [![加入QQ群](https://img.shields.io/badge/101539465-blue.svg)](https://jq.qq.com/?_wv=1027&k=UKtX5jhs) 点击按钮入群。
+```bash
+# 克隆项目
+git https://gitee.com/Ning310975876/ruo-yi-vue-blog.git
+
+# 进入项目目录
+cd ruoyi-ui
+
+# 安装依赖
+npm install
+
+# 建议不要直接使用 cnpm 安装依赖，会有各种诡异的 bug。可以通过如下操作解决 npm 下载速度慢的问题
+npm install --registry=https://registry.npm.taobao.org
+
+# 启动服务
+npm run dev
+```
+
+浏览器访问 http://localhost:80
+
+## 发布
+
+```bash
+# 构建测试环境
+npm run build:stage
+
+# 构建生产环境
+npm run build:prod
+```
+
