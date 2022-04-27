@@ -3,6 +3,7 @@ package com.ruoyi.cms.comment.mapper;
 import java.util.List;
 import com.ruoyi.cms.comment.domain.CmsComment;
 import com.ruoyi.cms.message.domain.CmsMessage;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 评论管理Mapper接口
@@ -27,6 +28,8 @@ public interface CmsCommentMapper
      * @return 评论管理集合
      */
     public List<CmsComment> selectCmsCommentList(CmsComment cmsComment);
+
+    public List<CmsComment> selectCmsCommentListBetweenCreateTime(@Param("type") String type, @Param("delFlag") String delFlag, @Param("createTimeBegin") String createTimeBegin, @Param("createTimeEnd") String createTimeEnd);
 
     /**
      * 查询子留言列表

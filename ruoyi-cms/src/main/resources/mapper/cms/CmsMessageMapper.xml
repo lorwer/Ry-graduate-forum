@@ -60,6 +60,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectCmsMessageVo"/>
         where id = #{id}
     </select>
+    <select id="selectCmsMessageListBetweenCreateTime" resultType="com.ruoyi.cms.message.domain.CmsMessage">
+        <include refid="selectCmsMessageVo"/>
+        <where>
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="delFlag != null  and delFlag != ''"> and del_flag = #{delFlag}</if>
+            <if test="createTimeBegin != null  and createTimeBegin != ''"> and create_time >= #{createTimeBegin}</if>
+            <if test="createTimeEnd != null  and createTimeEnd != ''"> and create_time &lt;= #{createTimeEnd}</if>
+        </where>
+    </select>
 
     <insert id="insertCmsMessage" parameterType="CmsMessage" useGeneratedKeys="true" keyProperty="id">
         insert into cms_message

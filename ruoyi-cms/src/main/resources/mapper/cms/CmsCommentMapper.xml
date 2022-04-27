@@ -59,6 +59,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </where>
         ORDER BY create_time ASC
     </select>
+    <select id="selectCmsCommentListBetweenCreateTime" resultType="com.ruoyi.cms.comment.domain.CmsComment">
+        <include refid="selectCmsCommentVo"/>
+        <where>
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="delFlag != null  and delFlag != ''"> and del_flag = #{delFlag}</if>
+            <if test="createTimeBegin != null  and createTimeBegin != ''"> and create_time >= #{createTimeBegin}</if>
+            <if test="createTimeEnd != null  and createTimeEnd != ''"> and create_time &lt;= #{createTimeEnd}</if>
+        </where>
+    </select>
 
     <insert id="insertCmsComment" parameterType="CmsComment" useGeneratedKeys="true" keyProperty="id">
         insert into cms_comment

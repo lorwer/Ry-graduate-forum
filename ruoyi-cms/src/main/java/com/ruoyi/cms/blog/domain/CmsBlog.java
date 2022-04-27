@@ -30,7 +30,7 @@ public class CmsBlog extends BaseEntity {
     private String title;
 
     /**
-     * 类型
+     * 类型 1文章 2随笔
      */
     @Excel(name = "类型")
     private String type;

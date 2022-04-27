@@ -7,7 +7,7 @@
       <line-chart :chart-data="lineChartData" />
     </el-row>
 
-   <!-- <el-row :gutter="32">
+    <el-row :gutter="32">
       <el-col :xs="24" :sm="24" :lg="8">
         <div class="chart-wrapper">
           <raddar-chart />
@@ -23,36 +23,40 @@
           <bar-chart />
         </div>
       </el-col>
-    </el-row> -->
+    </el-row>
 
 
   </div>
 </template>
 
 <script>
-import PanelGroup from './dashboard/PanelGroup1'
-import LineChart from './dashboard/LineChart'
-import RaddarChart from './dashboard/RaddarChart'
-import PieChart from './dashboard/PieChart'
-import BarChart from './dashboard/BarChart'
+import PanelGroup from './dashboard/PanelGroupCms'
+import LineChart from './dashboard/LineChartCms'
+import RaddarChart from './dashboard/TagChart'
+import PieChart from './dashboard/PieChartCms'
+import BarChart from './dashboard/BarChartCms'
 
 const lineChartData = {
-  newVisitis: {
-    expectedData: [100, 120, 161, 134, 105, 160, 165],
-    actualData: [120, 82, 91, 154, 162, 140, 145]
+  views: {
+    blogColor: 'rgba(243, 248, 255, 0)',
+    commentColor: 'rgba(243, 248, 255, 0)',
+    messageColor: 'rgba(243, 248, 255, 0)',
   },
-  messages: {
-    expectedData: [200, 192, 120, 144, 160, 130, 140],
-    actualData: [180, 160, 151, 106, 145, 150, 130]
+  blog: {
+    blogColor: 'rgba(56, 136, 250, 0.2)',
+    commentColor: 'rgba(243, 248, 255, 0)',
+    messageColor: 'rgba(243, 248, 255, 0)',
   },
-  // purchases: {
-  //   expectedData: [80, 100, 121, 104, 105, 90, 100],
-  //   actualData: [120, 90, 100, 138, 142, 130, 130]
-  // },
-  // shoppings: {
-  //   expectedData: [130, 140, 141, 142, 145, 150, 160],
-  //   actualData: [120, 82, 91, 154, 162, 140, 130]
-  // }
+  comment: {
+    blogColor: 'rgba(243, 248, 255, 0)',
+    commentColor: 'rgba(255, 0, 90, 0.2)',
+    messageColor: 'rgba(243, 248, 255, 0)',
+  },
+  message: {
+    blogColor: 'rgba(243, 248, 255, 0)',
+    commentColor: 'rgba(243, 248, 255, 0)',
+    messageColor: 'rgba(52, 191, 163, 0.2)',
+  }
 }
 
 export default {
@@ -66,7 +70,7 @@ export default {
   },
   data() {
     return {
-      lineChartData: lineChartData.newVisitis
+      lineChartData: lineChartData.views
     }
   },
   methods: {

@@ -65,6 +65,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </where>
         ORDER BY views DESC, create_time DESC
     </select>
+    <select id="selectCmsBlogListBetweenCreateTime" resultType="com.ruoyi.cms.blog.domain.CmsBlog">
+        <include refid="selectCmsBlogVo"/>
+        <where>
+            <if test="title != null  and title != ''"> and title like concat('%', #{title}, '%')</if>
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="top != null  and top != ''"> and Top = #{top}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+            <if test="createTimeBegin != null  and createTimeBegin != ''"> and create_time >= #{createTimeBegin}</if>
+            <if test="createTimeEnd != null  and createTimeEnd != ''"> and create_time &lt;= #{createTimeEnd}</if>
+            <if test="createBy != null  and createBy != ''"> and create_by = #{createBy}</if>
+        </where>
+        ORDER BY Top DESC, create_time DESC
+    </select>
 
     <insert id="insertCmsBlog" parameterType="CmsBlog" useGeneratedKeys="true" keyProperty="id">
         insert into cms_blog

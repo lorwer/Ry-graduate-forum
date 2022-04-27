@@ -2,6 +2,7 @@ package com.ruoyi.cms.message.mapper;
 
 import java.util.List;
 import com.ruoyi.cms.message.domain.CmsMessage;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 留言管理Mapper接口
@@ -26,6 +27,8 @@ public interface CmsMessageMapper
      * @return 留言管理集合
      */
     public List<CmsMessage> selectCmsMessageList(CmsMessage cmsMessage);
+
+    public List<CmsMessage> selectCmsMessageListBetweenCreateTime(@Param("type") String type, @Param("delFlag") String delFlag, @Param("createTimeBegin") String createTimeBegin, @Param("createTimeEnd") String createTimeEnd);
 
     /**
      * 查询子留言列表

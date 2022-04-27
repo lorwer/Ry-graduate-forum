@@ -2,6 +2,7 @@ package com.ruoyi.cms.blog.mapper;
 
 import java.util.List;
 import com.ruoyi.cms.blog.domain.CmsBlog;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 文章管理Mapper接口
@@ -26,6 +27,8 @@ public interface CmsBlogMapper
      * @return 文章管理集合
      */
     public List<CmsBlog> selectCmsBlogList(CmsBlog cmsBlog);
+
+    public List<CmsBlog> selectCmsBlogListBetweenCreateTime(@Param("title") String title,@Param("type") String type,@Param("top") String top,@Param("status") String status,@Param("createTimeBegin") String createTimeBegin,@Param("createTimeEnd") String createTimeEnd,@Param("createBy") String createBy);
 
     /**
      * 查询推荐文章列表
