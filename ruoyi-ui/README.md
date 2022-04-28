@@ -19,7 +19,7 @@
 
 👍👍 感谢若依提供如此优秀的框架❤️❤️ 
 
-**RuoYi-Vue** 是一个 Java EE 企业级快速开发平台，基于经典技术组合（Spring Boot、Spring Security、MyBatis、Jwt、Vue），内置模块如：部门管理、角色用户、菜单及按钮授权、数据权限、系统参数、日志管理、代码生成等。在线定时任务配置；支持集群，支持多数据源，支持分布式事务。。
+**RuoYi-Vue** 是一个 Java EE 企业级快速开发平台，基于经典技术组合（Spring Boot、Spring Security、MyBatis、Jwt、Vue），内置模块如：部门管理、角色用户、菜单及按钮授权、数据权限、系统参数、日志管理、代码生成等。在线定时任务配置；支持集群，支持多数据源，支持分布式事务。
 
 ## 快速了解
 
@@ -131,6 +131,10 @@ RuoYi-Vue是一款基于SpringBoot+Vue的前后端分离极速后台开发框架
 	<tr>
         <td><img src="public/systemImg/文件管理.png"/></td>
         <td><img src="public/systemImg/图片预览.png"/></td>
+    </tr>
+	<tr>
+        <td><img src="public/systemImg/后台首页1.png"/></td>
+        <td><img src="public/systemImg/后台首页2.png"/></td>
     </tr>
 </table>
 
