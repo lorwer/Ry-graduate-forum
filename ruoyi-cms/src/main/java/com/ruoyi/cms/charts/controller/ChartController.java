@@ -7,7 +7,6 @@ package com.ruoyi.cms.charts.controller;
  */
 
 import com.ruoyi.cms.blog.domain.CmsBlog;
-import com.ruoyi.cms.blog.service.ICmsBlogService;
 import com.ruoyi.cms.charts.service.IChartService;
 import com.ruoyi.cms.comment.domain.CmsComment;
 import com.ruoyi.cms.comment.service.ICmsCommentService;
@@ -208,7 +207,7 @@ public class ChartController extends BaseController {
         }
         List<CmsTag> list = cmsTagService.selectCmsTagList(cmsTag);
         for (CmsTag cTag : list) {
-            tag.add(cTag.getTagName());
+            tag.add(cTag.getTagName()+" "+String.valueOf(cTag.getBlogNum()));
         }
         tagChart.put("tag", tag);
         return tagChart;
