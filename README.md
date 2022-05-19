@@ -26,11 +26,11 @@
 Blog是基于RuoYi-Vue平台开发  
 RuoYi-Vue是一款基于SpringBoot+Vue的前后端分离极速后台开发框架。
 
-- RuoYi 官网地址：http://ruoyi.vip(opens new window)
-- RuoYi 在线文档：http://doc.ruoyi.vip/ruoyi-vue(opens new window)
-- RuoYi 源码下载：https://gitee.com/y_project/RuoYi-Vue(opens new window)
-- RuoYi 在线提问：https://gitee.com/y_project/RuoYi-Vue/issues(opens new window)
-- RuoYi 博客：https://www.oschina.net/p/ruoyi
+- RuoYi 官网地址：<a target="_blank" href="http://ruoyi.vip">http://ruoyi.vip(opens new window)</a>
+- RuoYi 在线文档：<a target="_blank" href="http://doc.ruoyi.vip/ruoyi-vue">http://doc.ruoyi.vip/ruoyi-vue(opens new window)</a>
+- RuoYi 源码下载：<a target="_blank" href="https://gitee.com/y_project/RuoYi-Vue">https://gitee.com/y_project/RuoYi-Vue(opens new window)</a>
+- RuoYi 在线提问：<a target="_blank" href="https://gitee.com/y_project/RuoYi-Vue/issues">https://gitee.com/y_project/RuoYi-Vue/issues(opens new window)</a>
+- RuoYi 博客：<a target="_blank" href="https://www.oschina.net/p/ruoyi">https://www.oschina.net/p/ruoyi(opens new window)</a>
 
 ## 系统需求
 
