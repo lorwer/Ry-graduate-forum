@@ -65,6 +65,15 @@ export default {
       this.chart = echarts.init(document.getElementById('pieChartId'), 'macarons')
 
       this.chart.setOption({
+        // title: {
+        //     text: '分类',
+        //     // subtext: 'Fake Data',
+        //     textStyle:{
+        //       color: 'rgba(0, 0, 0, 0.45)',
+        //       fontWeight: 'bold',
+        //       fontSize: '16'
+        //     }
+        //   },
         tooltip: {
           trigger: 'item',
           formatter: '{a} <br/>{b} : {c} ({d}%)'
@@ -79,7 +88,7 @@ export default {
             name: '分类',
             type: 'pie',
             roseType: 'radius',
-            radius: [15, 95],
+            radius: [15, 75],
             center: ['50%', '38%'],
             data: this.data,
             animationEasing: 'cubicInOut',
