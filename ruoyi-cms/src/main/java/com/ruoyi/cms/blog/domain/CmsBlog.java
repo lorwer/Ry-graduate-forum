@@ -59,6 +59,14 @@ public class CmsBlog extends BaseEntity {
     @Excel(name = "状态", readConverterExp = "0=暂存,1=发布")
     private String status;
 
+    /** 首页图片 */
+    @Excel(name = "首页图片")
+    private String blogPic;
+
+    /** 简介 */
+    @Excel(name = "简介")
+    private String blogDesc;
+
     /**
      * 分类
      */
@@ -163,6 +171,22 @@ public class CmsBlog extends BaseEntity {
         this.types = types;
     }
 
+    public String getBlogPic() {
+        return blogPic;
+    }
+
+    public void setBlogPic(String blogPic) {
+        this.blogPic = blogPic;
+    }
+
+    public String getBlogDesc() {
+        return blogDesc;
+    }
+
+    public void setBlogDesc(String blogDesc) {
+        this.blogDesc = blogDesc;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
@@ -181,6 +205,8 @@ public class CmsBlog extends BaseEntity {
                 .append("tagIds", getTagIds())
                 .append("tags", getTags())
                 .append("types", getTypes())
+                .append("blogPic", getBlogPic())
+                .append("blogDesc", getBlogDesc())
                 .toString();
     }
 }

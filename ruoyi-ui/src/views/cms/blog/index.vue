@@ -41,6 +41,16 @@
       :row-class-name="tableRowClassName">
       <el-table-column type="selection" width="55" align="center" />
       <!-- <el-table-column label="ID" align="center" prop="id" /> -->
+      <el-table-column label="首图预览" align="center" prop="blogPic" >
+        <template slot-scope="scope">
+          <el-image
+              style="width: 120px;height: 60px;"
+              :src="scope.row.blogPic"
+              lazy
+              :preview-src-list="[scope.row.blogPic]">
+            </el-image>
+        </template>
+      </el-table-column>
       <el-table-column label="标题" align="center" prop="title" />
       <!-- <el-table-column label="内容" align="center" prop="content" /> -->
       <!-- <el-table-column label="置顶" align="center" prop="top" /> -->
@@ -88,6 +98,18 @@
         <el-form-item label="标题" prop="title">
           <el-input v-model="form.title" placeholder="请输入标题" />
         </el-form-item>
+        <el-row>
+          <el-col :span="8">
+            <el-form-item label="首图">
+              <imageUpload v-model="form.blogPic" :limit="1" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="16">
+            <el-form-item label="简介">
+              <el-input type="textarea" v-model="form.blogDesc" :autosize="{ minRows: 7, maxRows: 7}" maxlength="50" show-word-limit placeholder="请输入简介" />
+            </el-form-item>
+          </el-col>
+        </el-row>
         <el-form-item label="内容">
           <cmsEditor v-model="form.content" @getFileId="getFileId" :min-height="192" />
         </el-form-item>
@@ -160,7 +182,8 @@
     getBlog,
     delBlog,
     addBlog,
-    updateBlog
+    updateBlog,
+    cancelBlog
   } from "@/api/cms/blog";
   import {
     delFileInfo
@@ -244,6 +267,14 @@
       getList() {
         this.loading = true;
         listBlog(this.queryParams).then(response => {
+          for (let i = 0; i < response.rows.length; i++) {
+            let blogInfo = response.rows[i];
+            if (blogInfo.blogPic.length > 0) {
+              response.rows[i].blogPic = process.env.VUE_APP_BASE_API + blogInfo.blogPic
+            }else{
+              response.rows[i].blogPic = '/errorImg.jpg'
+            }
+          };
           this.blogList = response.rows;
           this.total = response.total;
           this.loading = false;
@@ -261,6 +292,7 @@
             delFileInfo(fileids);
           };
           this.fileIds.length = 0;
+          cancelBlog(this.form).then(response => {});
           this.top = false;
           this.open = false;
           this.reset();
@@ -280,6 +312,8 @@
           top: "0",
           views: null,
           status: "0",
+          blogDesc: null,
+          blogPic: null,
           tagIds: [],
           typeIds: []
         };

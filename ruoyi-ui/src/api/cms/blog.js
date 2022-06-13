@@ -130,3 +130,12 @@ export function delBlog(id) {
     method: 'delete'
   })
 }
+
+// 取消按钮-删除首图
+export function cancelBlog(data) {
+  return request({
+    url: '/cms/blog/cancel',
+    method: 'post',
+    data: data
+  })
+}
