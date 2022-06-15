@@ -11,7 +11,7 @@
  Target Server Version : 50717
  File Encoding         : 65001
 
- Date: 13/06/2022 15:28:13
+ Date: 15/06/2022 08:16:43
 */
 
 SET NAMES utf8mb4;
@@ -41,7 +41,7 @@ CREATE TABLE `cms_blog`  (
 -- ----------------------------
 -- Records of cms_blog
 -- ----------------------------
-INSERT INTO `cms_blog` VALUES (7, 'admin', '2022-01-02 12:25:26', 'admin', '2022-06-13 14:40:05', '阿萨', '1', 0x3C683120636C6173733D22716C2D616C69676E2D63656E746572223EE6B58BE8AF953C2F68313E3C703E312EE58F91E7949FE79A84E59CB0E696B9E998BFE890A8E79A843C2F703E3C703E322EE5958AE6898BE58AA8E998803C2F703E3C703EE998BFE890A8E4BA8BE5AE9EE4B88A3C2F703E, '1', 20, '1', '', '置顶文章');
+INSERT INTO `cms_blog` VALUES (7, 'admin', '2022-01-02 12:25:26', 'admin', '2022-06-15 08:15:40', '阿萨', '1', 0x3C683120636C6173733D22716C2D616C69676E2D63656E746572223EE6B58BE8AF953C2F68313E3C703E312EE58F91E7949FE79A84E59CB0E696B9E998BFE890A8E79A843C2F703E3C703E322EE5958AE6898BE58AA8E998803C2F703E3C703EE998BFE890A8E4BA8BE5AE9EE4B88A3C2F703E, '1', 21, '1', '', '置顶文章');
 INSERT INTO `cms_blog` VALUES (10, 'admin', '2022-01-03 02:59:22', '', NULL, '2222', '1', NULL, '0', 0, '0', '', NULL);
 INSERT INTO `cms_blog` VALUES (13, 'admin', '2022-01-03 21:37:57', 'admin', '2022-01-13 14:45:08', '强强强强', '1', NULL, '0', 3, '1', '', NULL);
 INSERT INTO `cms_blog` VALUES (14, '若依', '2022-01-04 14:31:31', 'admin', '2022-06-13 11:53:18', '若依', '1', 0x3C703E3C62723E3C2F703E, '0', 2, '1', '', NULL);
@@ -530,7 +530,7 @@ CREATE TABLE `qrtz_scheduler_state`  (
 -- ----------------------------
 -- Records of qrtz_scheduler_state
 -- ----------------------------
-INSERT INTO `qrtz_scheduler_state` VALUES ('RuoyiScheduler', 'DESKTOP-UKNLDB61655083606943', 1655105286020, 15000);
+INSERT INTO `qrtz_scheduler_state` VALUES ('RuoyiScheduler', 'DESKTOP-UKNLDB61655251502742', 1655252196627, 15000);
 
 -- ----------------------------
 -- Table structure for qrtz_simple_triggers
@@ -599,9 +599,9 @@ CREATE TABLE `qrtz_triggers`  (
 -- ----------------------------
 -- Records of qrtz_triggers
 -- ----------------------------
-INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME1', 'DEFAULT', 'TASK_CLASS_NAME1', 'DEFAULT', NULL, 1655083610000, -1, 5, 'PAUSED', 'CRON', 1655083607000, 0, NULL, 2, '');
-INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME2', 'DEFAULT', 'TASK_CLASS_NAME2', 'DEFAULT', NULL, 1655083620000, -1, 5, 'PAUSED', 'CRON', 1655083607000, 0, NULL, 2, '');
-INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME3', 'DEFAULT', 'TASK_CLASS_NAME3', 'DEFAULT', NULL, 1655083620000, -1, 5, 'PAUSED', 'CRON', 1655083607000, 0, NULL, 2, '');
+INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME1', 'DEFAULT', 'TASK_CLASS_NAME1', 'DEFAULT', NULL, 1655251510000, -1, 5, 'PAUSED', 'CRON', 1655251502000, 0, NULL, 2, '');
+INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME2', 'DEFAULT', 'TASK_CLASS_NAME2', 'DEFAULT', NULL, 1655251515000, -1, 5, 'PAUSED', 'CRON', 1655251502000, 0, NULL, 2, '');
+INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME3', 'DEFAULT', 'TASK_CLASS_NAME3', 'DEFAULT', NULL, 1655251520000, -1, 5, 'PAUSED', 'CRON', 1655251502000, 0, NULL, 2, '');
 
 -- ----------------------------
 -- Table structure for sys_config
@@ -775,13 +775,7 @@ CREATE TABLE `sys_file_info`  (
   `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
   `update_time` datetime(0) DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`file_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文件信息表' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of sys_file_info
--- ----------------------------
-INSERT INTO `sys_file_info` VALUES (7, 'OIP-C1.jpg', 'jpg', '5.51 kB', '3adfba30-7482-4c74-a308-7c735777e1ce.jpg', '/profile/upload/2022/06/13/3adfba30-7482-4c74-a308-7c735777e1ce.jpg', 'N', 'admin', '2022-06-13 09:14:44', '', NULL);
-INSERT INTO `sys_file_info` VALUES (9, 'OIP-C1.jpg', 'jpg', '5.51 kB', '8f9993e8-847b-45d0-9751-dd4cabf7f8b6.jpg', '/profile/upload/2022/06/13/8f9993e8-847b-45d0-9751-dd4cabf7f8b6.jpg', 'N', 'admin', '2022-06-13 09:33:16', '', NULL);
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文件信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for sys_job
@@ -842,7 +836,7 @@ CREATE TABLE `sys_logininfor`  (
   `msg` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '提示消息',
   `login_time` datetime(0) DEFAULT NULL COMMENT '访问时间',
   PRIMARY KEY (`info_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 61 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 63 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_logininfor
@@ -907,6 +901,8 @@ INSERT INTO `sys_logininfor` VALUES (57, 'admin', '127.0.0.1', '内网IP', 'Chro
 INSERT INTO `sys_logininfor` VALUES (58, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-06-13 14:04:02');
 INSERT INTO `sys_logininfor` VALUES (59, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '退出成功', '2022-06-13 14:59:35');
 INSERT INTO `sys_logininfor` VALUES (60, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-06-13 15:05:01');
+INSERT INTO `sys_logininfor` VALUES (61, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-06-14 17:47:57');
+INSERT INTO `sys_logininfor` VALUES (62, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-06-15 08:07:53');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -1127,7 +1123,7 @@ CREATE TABLE `sys_oper_log`  (
   `error_msg` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '错误消息',
   `oper_time` datetime(0) DEFAULT NULL COMMENT '操作时间',
   PRIMARY KEY (`oper_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 50 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 56 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_oper_log
@@ -1181,6 +1177,12 @@ INSERT INTO `sys_oper_log` VALUES (46, '文章管理', 2, 'com.ruoyi.cms.blog.co
 INSERT INTO `sys_oper_log` VALUES (47, '文章管理', 2, 'com.ruoyi.cms.blog.controller.CmsBlogController.edit()', 'PUT', 1, 'admin', NULL, '/cms/blog', '127.0.0.1', '内网IP', '{\"types\":[{\"createBy\":\"若依\",\"createTime\":1641277883000,\"updateBy\":\"admin\",\"typePic\":\"\",\"typeName\":\"若依\",\"typeId\":14,\"updateTime\":1644483360000,\"params\":{},\"blogNum\":0}],\"tagIds\":[26],\"updateTime\":1655104490134,\"params\":{},\"title\":\"是VSD v阿萨DVD v大是大非v阿斯蒂芬v地方\",\"type\":\"1\",\"content\":\"<p>1234555的风格</p>\",\"tags\":[{\"createBy\":\"若依\",\"createTime\":1641278906000,\"tagId\":26,\"updateBy\":\"\",\"params\":{},\"tagName\":\"若依\",\"blogNum\":0}],\"blogPic\":\"\",\"createBy\":\"admin\",\"top\":\"0\",\"createTime\":1641980454000,\"updateBy\":\"admin\",\"typeIds\":[14],\"id\":19,\"views\":133,\"status\":\"1\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-06-13 15:14:50');
 INSERT INTO `sys_oper_log` VALUES (48, '文章管理', 2, 'com.ruoyi.cms.blog.controller.CmsBlogController.edit()', 'PUT', 1, 'admin', NULL, '/cms/blog', '127.0.0.1', '内网IP', '{\"types\":[{\"createBy\":\"admin\",\"createTime\":1641223880000,\"updateBy\":\"\",\"typePic\":\"\",\"typeName\":\"人然\",\"typeId\":11,\"params\":{},\"blogNum\":0}],\"tagIds\":[21,25],\"updateTime\":1655104495721,\"params\":{},\"title\":\"阿斯顿v奥迪的vvv从vvc从v从 啊高富帅是否公司费格式发给非钢是法国四个非钢\",\"type\":\"1\",\"content\":\"<h2>此事阿萨的</h2><h3>啊手动阀</h3><p><em>啊</em><em style=\\\"color: rgb(230, 0, 0);\\\">发生</em><em>的</em></p><p><s>奥迪发</s></p><p><span style=\\\"background-color: rgb(255, 255, 0);\\\">是否</span></p><p><br></p><p><br></p><p><br></p><p><br></p><h2 class=\\\"ql-align-center\\\"><strong>奥迪</strong></h2><p><u>啊手动阀</u></p><p><br></p><p><br></p><p><br></p><p><br></p><blockquote>var a = 1;</blockquote><blockquote>for (let i = 0; i &lt;10; i++){</blockquote><blockquote>}</blockquote><pre class=\\\"ql-syntax\\\" spellcheck=\\\"false\\\">var a = 1;\\nfor (let i = 0; i &lt;10; i++){\\n}\\n</pre><p>123</p><p><br></p><p><a href=\\\"http://www.baidu.com\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">百度</a></p>\",\"tags\":[{\"createBy\":\"admin\",\"createTime\":1641221423000,\"tagId\":21,\"updateBy\":\"\",\"params\":{},\"tagName\":\"打\",\"blogNum\":0},{\"createBy\":\"admin\",\"createTime\":1641223838000,\"tagId\":25,\"updateBy\":\"\",\"params\":{},\"tagName\":\"愤愤愤\",\"blogNum\":0}],\"blogPic\":\"\",\"createBy\":\"admin\",\"top\":\"0\",\"createTime\":1641347093000,\"updateBy\":\"admin\",\"typeIds\":[11],\"id\":16,\"views\":79,\"status\":\"1\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-06-13 15:14:55');
 INSERT INTO `sys_oper_log` VALUES (49, '文章管理', 3, 'com.ruoyi.cms.blog.controller.CmsBlogController.remove()', 'DELETE', 1, 'admin', NULL, '/cms/blog/21', '127.0.0.1', '内网IP', '{ids=21}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-06-13 15:27:27');
+INSERT INTO `sys_oper_log` VALUES (50, '文章管理', 2, 'com.ruoyi.cms.blog.controller.CmsBlogController.edit()', 'PUT', 1, 'admin', NULL, '/cms/blog', '127.0.0.1', '内网IP', '{\"types\":[{\"createBy\":\"admin\",\"createTime\":1641223870000,\"updateBy\":\"\",\"typePic\":\"\",\"typeName\":\"阿萨的\",\"typeId\":10,\"params\":{},\"blogNum\":0},{\"createBy\":\"admin\",\"createTime\":1641223889000,\"updateBy\":\"\",\"typePic\":\"\",\"typeName\":\"啊啊\",\"typeId\":13,\"params\":{},\"blogNum\":0}],\"tagIds\":[20,24,25],\"updateTime\":1655200174466,\"params\":{},\"title\":\"阿萨\",\"type\":\"1\",\"content\":\"<h1 class=\\\"ql-align-center\\\">测试</h1><p>1.发生的地方阿萨的</p><p>2.啊手动阀</p><p>阿萨事实上</p>\",\"tags\":[{\"createBy\":\"admin\",\"createTime\":1641221405000,\"tagId\":20,\"updateBy\":\"\",\"params\":{},\"tagName\":\"啊实打实\",\"blogNum\":0},{\"createBy\":\"admin\",\"createTime\":1641223832000,\"tagId\":24,\"updateBy\":\"\",\"params\":{},\"tagName\":\"阿松大\",\"blogNum\":0},{\"createBy\":\"admin\",\"createTime\":1641223838000,\"tagId\":25,\"updateBy\":\"\",\"params\":{},\"tagName\":\"愤愤愤\",\"blogNum\":0}],\"blogPic\":\"/profile/upload/2022/06/14/44119643-1fa9-4963-8752-4cccefce523d.jpg\",\"createBy\":\"admin\",\"top\":\"1\",\"createTime\":1641097526000,\"updateBy\":\"admin\",\"typeIds\":[10,13],\"blogDesc\":\"置顶文章\",\"id\":7,\"views\":21,\"status\":\"1\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-06-14 17:49:34');
+INSERT INTO `sys_oper_log` VALUES (51, '文章管理', 2, 'com.ruoyi.cms.blog.controller.CmsBlogController.edit()', 'PUT', 1, 'admin', NULL, '/cms/blog', '127.0.0.1', '内网IP', '{\"types\":[{\"createBy\":\"admin\",\"createTime\":1641223870000,\"updateBy\":\"\",\"typePic\":\"\",\"typeName\":\"阿萨的\",\"typeId\":10,\"params\":{},\"blogNum\":0},{\"createBy\":\"admin\",\"createTime\":1641223889000,\"updateBy\":\"\",\"typePic\":\"\",\"typeName\":\"啊啊\",\"typeId\":13,\"params\":{},\"blogNum\":0}],\"tagIds\":[20,24,25],\"updateTime\":1655200459176,\"params\":{},\"title\":\"阿萨\",\"type\":\"1\",\"content\":\"<h1 class=\\\"ql-align-center\\\">测试</h1><p>1.发生的地方阿萨的</p><p>2.啊手动阀</p><p>阿萨事实上</p>\",\"tags\":[{\"createBy\":\"admin\",\"createTime\":1641221405000,\"tagId\":20,\"updateBy\":\"\",\"params\":{},\"tagName\":\"啊实打实\",\"blogNum\":0},{\"createBy\":\"admin\",\"createTime\":1641223832000,\"tagId\":24,\"updateBy\":\"\",\"params\":{},\"tagName\":\"阿松大\",\"blogNum\":0},{\"createBy\":\"admin\",\"createTime\":1641223838000,\"tagId\":25,\"updateBy\":\"\",\"params\":{},\"tagName\":\"愤愤愤\",\"blogNum\":0}],\"blogPic\":\"\",\"createBy\":\"admin\",\"top\":\"1\",\"createTime\":1641097526000,\"updateBy\":\"admin\",\"typeIds\":[10,13],\"blogDesc\":\"置顶文章\",\"id\":7,\"views\":21,\"status\":\"1\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-06-14 17:54:19');
+INSERT INTO `sys_oper_log` VALUES (52, '文章管理', 2, 'com.ruoyi.cms.blog.controller.CmsBlogController.edit()', 'PUT', 1, 'admin', NULL, '/cms/blog', '127.0.0.1', '内网IP', '{\"types\":[{\"createBy\":\"admin\",\"createTime\":1641223870000,\"updateBy\":\"\",\"typePic\":\"\",\"typeName\":\"阿萨的\",\"typeId\":10,\"params\":{},\"blogNum\":0},{\"createBy\":\"admin\",\"createTime\":1641223889000,\"updateBy\":\"\",\"typePic\":\"\",\"typeName\":\"啊啊\",\"typeId\":13,\"params\":{},\"blogNum\":0}],\"tagIds\":[20,24,25],\"updateTime\":1655200471177,\"params\":{},\"title\":\"阿萨\",\"type\":\"1\",\"content\":\"<h1 class=\\\"ql-align-center\\\">测试</h1><p>1.发生的地方阿萨的</p><p>2.啊手动阀</p><p>阿萨事实上</p>\",\"tags\":[{\"createBy\":\"admin\",\"createTime\":1641221405000,\"tagId\":20,\"updateBy\":\"\",\"params\":{},\"tagName\":\"啊实打实\",\"blogNum\":0},{\"createBy\":\"admin\",\"createTime\":1641223832000,\"tagId\":24,\"updateBy\":\"\",\"params\":{},\"tagName\":\"阿松大\",\"blogNum\":0},{\"createBy\":\"admin\",\"createTime\":1641223838000,\"tagId\":25,\"updateBy\":\"\",\"params\":{},\"tagName\":\"愤愤愤\",\"blogNum\":0}],\"blogPic\":\"/profile/upload/2022/06/14/6142a7e1-4ed8-4fce-97a6-10140aea2354.jpg\",\"createBy\":\"admin\",\"top\":\"1\",\"createTime\":1641097526000,\"updateBy\":\"admin\",\"typeIds\":[10,13],\"blogDesc\":\"置顶文章\",\"id\":7,\"views\":21,\"status\":\"1\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-06-14 17:54:31');
+INSERT INTO `sys_oper_log` VALUES (53, '文章管理', 2, 'com.ruoyi.cms.blog.controller.CmsBlogController.edit()', 'PUT', 1, 'admin', NULL, '/cms/blog', '127.0.0.1', '内网IP', '{\"types\":[{\"createBy\":\"admin\",\"createTime\":1641223870000,\"updateBy\":\"\",\"typePic\":\"\",\"typeName\":\"阿萨的\",\"typeId\":10,\"params\":{},\"blogNum\":0},{\"createBy\":\"admin\",\"createTime\":1641223889000,\"updateBy\":\"\",\"typePic\":\"\",\"typeName\":\"啊啊\",\"typeId\":13,\"params\":{},\"blogNum\":0}],\"tagIds\":[20,24,25],\"updateTime\":1655202098677,\"params\":{},\"title\":\"阿萨\",\"type\":\"1\",\"content\":\"<h1 class=\\\"ql-align-center\\\">测试</h1><p>1.发生的地方阿萨的</p><p>2.啊手动阀</p><p>阿萨事实上</p>\",\"tags\":[{\"createBy\":\"admin\",\"createTime\":1641221405000,\"tagId\":20,\"updateBy\":\"\",\"params\":{},\"tagName\":\"啊实打实\",\"blogNum\":0},{\"createBy\":\"admin\",\"createTime\":1641223832000,\"tagId\":24,\"updateBy\":\"\",\"params\":{},\"tagName\":\"阿松大\",\"blogNum\":0},{\"createBy\":\"admin\",\"createTime\":1641223838000,\"tagId\":25,\"updateBy\":\"\",\"params\":{},\"tagName\":\"愤愤愤\",\"blogNum\":0}],\"blogPic\":\"\",\"createBy\":\"admin\",\"top\":\"1\",\"createTime\":1641097526000,\"updateBy\":\"admin\",\"typeIds\":[10,13],\"blogDesc\":\"置顶文章\",\"id\":7,\"views\":21,\"status\":\"1\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-06-14 18:21:38');
+INSERT INTO `sys_oper_log` VALUES (54, '文章管理', 2, 'com.ruoyi.cms.blog.controller.CmsBlogController.edit()', 'PUT', 1, 'admin', NULL, '/cms/blog', '127.0.0.1', '内网IP', '{\"types\":[{\"createBy\":\"admin\",\"createTime\":1641223870000,\"updateBy\":\"\",\"typePic\":\"\",\"typeName\":\"阿萨的\",\"typeId\":10,\"params\":{},\"blogNum\":0},{\"createBy\":\"admin\",\"createTime\":1641223889000,\"updateBy\":\"\",\"typePic\":\"\",\"typeName\":\"啊啊\",\"typeId\":13,\"params\":{},\"blogNum\":0}],\"tagIds\":[20,24,25],\"updateTime\":1655252127390,\"params\":{},\"title\":\"阿萨\",\"type\":\"1\",\"content\":\"<h1 class=\\\"ql-align-center\\\">测试</h1><p>1.发生的地方阿萨的</p><p>2.啊手动阀</p><p>阿萨事实上</p>\",\"tags\":[{\"createBy\":\"admin\",\"createTime\":1641221405000,\"tagId\":20,\"updateBy\":\"\",\"params\":{},\"tagName\":\"啊实打实\",\"blogNum\":0},{\"createBy\":\"admin\",\"createTime\":1641223832000,\"tagId\":24,\"updateBy\":\"\",\"params\":{},\"tagName\":\"阿松大\",\"blogNum\":0},{\"createBy\":\"admin\",\"createTime\":1641223838000,\"tagId\":25,\"updateBy\":\"\",\"params\":{},\"tagName\":\"愤愤愤\",\"blogNum\":0}],\"blogPic\":\"/profile/upload/2022/06/15/95bf30dd-24d1-4757-8f4e-0527939b1cd0.jpg\",\"createBy\":\"admin\",\"top\":\"1\",\"createTime\":1641097526000,\"updateBy\":\"admin\",\"typeIds\":[10,13],\"blogDesc\":\"置顶文章\",\"id\":7,\"views\":21,\"status\":\"1\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-06-15 08:15:27');
+INSERT INTO `sys_oper_log` VALUES (55, '文章管理', 2, 'com.ruoyi.cms.blog.controller.CmsBlogController.edit()', 'PUT', 1, 'admin', NULL, '/cms/blog', '127.0.0.1', '内网IP', '{\"types\":[{\"createBy\":\"admin\",\"createTime\":1641223870000,\"updateBy\":\"\",\"typePic\":\"\",\"typeName\":\"阿萨的\",\"typeId\":10,\"params\":{},\"blogNum\":0},{\"createBy\":\"admin\",\"createTime\":1641223889000,\"updateBy\":\"\",\"typePic\":\"\",\"typeName\":\"啊啊\",\"typeId\":13,\"params\":{},\"blogNum\":0}],\"tagIds\":[20,24,25],\"updateTime\":1655252140428,\"params\":{},\"title\":\"阿萨\",\"type\":\"1\",\"content\":\"<h1 class=\\\"ql-align-center\\\">测试</h1><p>1.发生的地方阿萨的</p><p>2.啊手动阀</p><p>阿萨事实上</p>\",\"tags\":[{\"createBy\":\"admin\",\"createTime\":1641221405000,\"tagId\":20,\"updateBy\":\"\",\"params\":{},\"tagName\":\"啊实打实\",\"blogNum\":0},{\"createBy\":\"admin\",\"createTime\":1641223832000,\"tagId\":24,\"updateBy\":\"\",\"params\":{},\"tagName\":\"阿松大\",\"blogNum\":0},{\"createBy\":\"admin\",\"createTime\":1641223838000,\"tagId\":25,\"updateBy\":\"\",\"params\":{},\"tagName\":\"愤愤愤\",\"blogNum\":0}],\"blogPic\":\"\",\"createBy\":\"admin\",\"top\":\"1\",\"createTime\":1641097526000,\"updateBy\":\"admin\",\"typeIds\":[10,13],\"blogDesc\":\"置顶文章\",\"id\":7,\"views\":21,\"status\":\"1\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2022-06-15 08:15:40');
 
 -- ----------------------------
 -- Table structure for sys_post
@@ -1392,7 +1394,7 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 103, 'admin', 'admin', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2022-06-13 15:05:02', 'admin', '2021-12-10 14:12:14', '', '2022-06-13 15:05:01', '管理员');
+INSERT INTO `sys_user` VALUES (1, 103, 'admin', 'admin', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2022-06-15 08:07:53', 'admin', '2021-12-10 14:12:14', '', '2022-06-15 08:07:53', '管理员');
 INSERT INTO `sys_user` VALUES (2, 105, '若依', '若依', '00', 'ry@qq.com', '15666666666', '1', '', '$2a$10$824HoRUuGXB3z/.Ei8jVy.LNBinXUc5iZM2alU7zqgWE4RSpFkyuW', '0', '0', '127.0.0.1', '2022-04-22 17:28:20', 'admin', '2021-12-10 14:12:14', 'admin', '2022-04-22 17:28:20', '测试员');
 
 -- ----------------------------
