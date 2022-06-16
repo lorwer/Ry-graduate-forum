@@ -432,6 +432,10 @@
     box-shadow: 0 0 20px 0 white;
     transition: all .2s;
   }
+  
+  .left-item .pagination-container{
+    background:rgb(255, 255, 255,0)
+  }
 
   @keyframes clipMe {
 
