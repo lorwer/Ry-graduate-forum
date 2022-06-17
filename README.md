@@ -17,7 +17,7 @@
 
 基于**RuoYi-Vue**前后端分离基础平台开发的**博客网站**。
 
-👍👍 感谢若依提供如此优秀的框架❤️❤️ 
+👍👍 感谢若依❤️❤️ 
 
 **RuoYi-Vue** 是一个 Java EE 企业级快速开发平台，基于经典技术组合（Spring Boot、Spring Security、MyBatis、Jwt、Vue），内置模块如：部门管理、角色用户、菜单及按钮授权、数据权限、系统参数、日志管理、代码生成等。在线定时任务配置；支持集群，支持多数据源，支持分布式事务。
 
@@ -170,3 +170,24 @@ npm run build:stage
 npm run build:prod
 ```
 
+## uniapp移动端即将发布
+
+移动端地址：敬请期待..
+
+**RuoYi-Vue-Blog** 移动端 **博客网站**。
+
+基于 uniapp 开发，一份代码多终端适配，支持H5+支付宝小程序+微信小程序+APP
+
+### 演示图
+
+<table>
+    <tr>
+        <td><img src="ruoyi-ui/public/systemImg/移动端首页.png"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/移动端详情文章.png"/></td>
+    </tr>
+    <tr>
+        <td><img src="ruoyi-ui/public/systemImg/移动端详情评论.jpg"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/移动端详情评论.png"/></td>
+    </tr>
+    
+</table>
