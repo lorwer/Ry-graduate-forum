@@ -174,7 +174,9 @@ npm run build:prod
 ----------
 
 
-## uniapp移动端即将发布
+<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">uniapp移动端</h1>
+
+## 即将发布
 
 移动端地址：敬请期待..
 
