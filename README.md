@@ -174,9 +174,8 @@ npm run build:prod
 ----------
 
 
-<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">uniapp移动端</h1>
-
-## 即将发布
+<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">Blog移动端</h1>
+<h4 align="center">即将发布</h4>
 
 移动端地址：敬请期待..
 
@@ -184,7 +183,7 @@ npm run build:prod
 
 基于 uniapp 开发，一份代码多终端适配，支持H5+支付宝小程序+微信小程序+APP
 
-### 演示图
+**演示图**
 
 <table>
     <tr>
