@@ -192,7 +192,7 @@ npm run build:prod
     </tr>
     <tr>
         <td><img src="ruoyi-ui/public/systemImg/移动端详情评论.png"/></td>
-        <td><img src="ruoyi-ui/public/systemImg/移动端详情评论.png"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/移动端留言.png"/></td>
     </tr>
     
 </table>
