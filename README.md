@@ -191,7 +191,7 @@ npm run build:prod
         <td><img src="ruoyi-ui/public/systemImg/移动端详情文章.png"/></td>
     </tr>
     <tr>
-        <td><img src="ruoyi-ui/public/systemImg/移动端详情评论.jpg"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/移动端详情评论.png"/></td>
         <td><img src="ruoyi-ui/public/systemImg/移动端详情评论.png"/></td>
     </tr>
     
