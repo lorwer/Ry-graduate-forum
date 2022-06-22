@@ -175,9 +175,8 @@ npm run build:prod
 
 
 <h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">Blog移动端</h1>
-<h4 align="center">即将发布</h4>
 
-移动端地址：敬请期待..
+移动端地址：<a target="_blank" href="https://gitee.com/Ning310975876/ruo-yi-vue-blog-uniapp">https://gitee.com/Ning310975876/ruo-yi-vue-blog-uniapp(opens new window)</a>
 
 **RuoYi-Vue-Blog** 移动端 **博客网站**。
 
