@@ -192,7 +192,17 @@ npm run build:prod
     </tr>
     <tr>
         <td><img src="ruoyi-ui/public/systemImg/移动端详情评论.png"/></td>
-        <td><img src="ruoyi-ui/public/systemImg/移动端留言.png"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/移动端随笔.png"/></td>
+    </tr>
+    <tr>
+        <td><img src="static/rdImg/移动端个人中心.png"/></td>
+        <td><img src="static/rdImg/移动端个人资料.png"/></td>
+    </tr>
+    <tr>
+        <td><img src="static/rdImg/移动端修改密码.png"/></td>
+        <td><img src="static/rdImg/移动端留言.png"/></td>
+    </tr><tr>
+        <td><img src="static/rdImg/移动端登录.png"/></td>
     </tr>
     
 </table>
