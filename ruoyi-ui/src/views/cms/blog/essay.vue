@@ -77,7 +77,8 @@
           <el-input v-model="form.title" placeholder="请输入标题" />
         </el-form-item>
         <el-form-item label="内容">
-          <cmsEditor v-model="form.content" @getFileId="getFileId" :min-height="192" />
+          <!-- 图片用base64存储,url方式移动端会显示异常 -->
+          <cmsEditor v-model="form.content" @getFileId="getFileId" type="base64" :min-height="192" />
         </el-form-item>
         <!-- <el-form-item>
           <el-checkbox v-model="top">置顶</el-checkbox>
