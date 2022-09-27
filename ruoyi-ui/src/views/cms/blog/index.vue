@@ -211,7 +211,7 @@
               </el-table-column>
               <el-table-column align="center" min-width="20%" label="操作">
                 <template slot-scope="scope">
-                  <el-button size="mini" plain @click="handleDownload(scope.row)">下载</el-button>
+                  <el-button v-show="scope.row.fileId!==''" size="mini" plain @click="handleDownload(scope.row)">下载</el-button>
                   <el-button size="mini" type="danger" plain @click="delFiles(scope.$index, scope.row)">删除</el-button>
                 </template>
               </el-table-column>
