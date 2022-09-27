@@ -9,7 +9,6 @@ import com.ruoyi.cms.tag.domain.CmsTag;
 import com.ruoyi.cms.tag.service.ICmsTagService;
 import com.ruoyi.cms.type.domain.CmsType;
 import com.ruoyi.cms.type.service.ICmsTypeService;
-import com.ruoyi.common.exception.ServiceException;
 import com.ruoyi.common.utils.SecurityUtils;
 import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.framework.web.service.SysPermissionService;
