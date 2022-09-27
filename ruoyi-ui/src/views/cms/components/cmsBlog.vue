@@ -42,6 +42,34 @@
             <el-button class="zanshang" slot="reference" type="danger" round plain>赞赏</el-button>
           </el-popover>
         </div> -->
+        <el-table :data="blog.blogFilesNew" :border="true" style="width: 99.99%;">
+          <el-table-column align="center" min-width="30%" prop="remark" label="附件">
+            <template slot-scope="scope">
+              <el-row>
+                <el-col :span="6"><div class="blogFilesInfoName">名称：</div></el-col>
+                <el-col :span="18"><el-input v-model="scope.row.fileOriginName" disabled/></el-col>
+              </el-row>
+              <el-row style="margin-top: 4px;">
+                <el-col :span="6"><div class="blogFilesInfoName">大小：</div></el-col>
+                <el-col :span="18"><el-input v-model="scope.row.fileSize" disabled/></el-col>
+              </el-row>
+              <el-row style="margin-top: 4px;">
+                <el-col :span="6"><div class="blogFilesInfoName">类型：</div></el-col>
+                <el-col :span="18"><el-input v-model="scope.row.fileSuffix" disabled/></el-col>
+              </el-row>
+            </template>
+          </el-table-column>
+          <el-table-column align="center" min-width="50%" prop="remark" label="备注">
+            <template slot-scope="scope">
+              <el-input v-model="scope.row.remark" type="textarea" :rows="6" size="small" disabled />
+            </template>
+          </el-table-column>
+          <el-table-column align="center" min-width="20%" label="操作">
+            <template slot-scope="scope">
+              <el-button size="mini" plain @click="handleDownload(scope.row)">下载</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
         <div class="author">
           <ul>
             <li>作者 {{blog.createBy}}</li>
@@ -120,7 +148,22 @@ export default {
       getBlogDetail(this.$route.query.id).then(response => {
         const {data: res} = response;
           this.blog = response.data
+          this.blog.blogFilesNew = []
+          if (response.data.blogFiles !== null) {
+            this.blog.blogFilesNew = JSON.parse(response.data.blogFiles)
+          }
         });
+    },
+    // 文件下载处理
+    handleDownload(row) {
+      var name = row.fileOriginName;
+      var url = row.filePath;
+      var suffix = url.substring(url.lastIndexOf("."), url.length);
+      const a = document.createElement('a')
+      a.setAttribute('download', name)
+      a.setAttribute('target', '_blank')
+      a.setAttribute('href', process.env.VUE_APP_BASE_API + url)
+      a.click()
     },
   },
 
@@ -128,7 +171,6 @@ export default {
 </script>
 
 <style scoped>
-
 
   .el-card {
     width: 100%;
@@ -274,5 +316,9 @@ export default {
     code, pre {
       font-size: 13px !important;
     }
+  }
+  .blogFilesInfoName {
+    text-align: center;
+    padding-top: 5px;
   }
 </style>

@@ -67,6 +67,9 @@ public class CmsBlog extends BaseEntity {
     @Excel(name = "简介")
     private String blogDesc;
 
+    /** 附件列表 */
+    private String blogFiles;
+
     /**
      * 分类
      */
@@ -187,6 +190,14 @@ public class CmsBlog extends BaseEntity {
         this.blogDesc = blogDesc;
     }
 
+    public String getBlogFiles() {
+        return blogFiles;
+    }
+
+    public void setBlogFiles(String blogFiles) {
+        this.blogFiles = blogFiles;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
@@ -207,6 +218,7 @@ public class CmsBlog extends BaseEntity {
                 .append("types", getTypes())
                 .append("blogPic", getBlogPic())
                 .append("blogDesc", getBlogDesc())
+                .append("blogFiles", getBlogFiles())
                 .toString();
     }
 }

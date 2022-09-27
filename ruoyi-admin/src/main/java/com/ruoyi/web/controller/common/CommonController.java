@@ -113,9 +113,12 @@ public class CommonController
 
             // 计算文件大小信息
             long size = file.getSize();
-            String[] unitNames = new String[]{"B", "kB", "MB", "GB", "TB", "EB"};
-            int digitGroups = Math.min(unitNames.length-1, (int) (Math.log10(size) / Math.log10(1024)));
-            String fileSizeInfo = new DecimalFormat("#,##0.##").format(size / Math.pow(1024, digitGroups)) + " " + unitNames[digitGroups];
+            String fileSizeInfo = "0kB";
+            if (size!=0){
+                String[] unitNames = new String[]{"B", "kB", "MB", "GB", "TB", "EB"};
+                int digitGroups = Math.min(unitNames.length-1, (int) (Math.log10(size) / Math.log10(1024)));
+                fileSizeInfo = new DecimalFormat("#,##0.##").format(size / Math.pow(1024, digitGroups)) + " " + unitNames[digitGroups];
+            }
 
             sysFileInfo.setFileOriginName(file.getOriginalFilename());
             sysFileInfo.setFileSuffix(suffix);
@@ -127,6 +130,9 @@ public class CommonController
             sysFileInfoService.insertSysFileInfo(sysFileInfo);
             Long fileId = sysFileInfo.getFileId();
             ajax.put("fileId", fileId);
+            ajax.put("fileOriginName", file.getOriginalFilename());
+            ajax.put("fileSuffix", suffix);
+            ajax.put("fileSize", fileSizeInfo);
             /*结束*/
 
             return ajax;

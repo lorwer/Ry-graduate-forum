@@ -83,6 +83,8 @@
             v-hasPermi="['cms:blog:edit']">修改</el-button>
           <el-button size="mini" type="text" icon="el-icon-delete" @click="handleDelete(scope.row)"
             v-hasPermi="['cms:blog:remove']">删除</el-button>
+            <el-button size="mini" type="text" icon="el-icon-folder-opened" @click="blogFiles(scope.row)"
+              v-hasPermi="['cms:blog:edit']">附件管理</el-button>
           <el-button size="mini" type="text" icon="el-icon-folder-opened" @click="fileList(scope.row)"
             v-hasPermi="['cms:blog:edit']">资源列表</el-button>
         </template>
@@ -174,10 +176,59 @@
       </el-table>
     </el-dialog>
 
+    <!-- 附件管理对话框 -->
+    <el-dialog title="附件管理" :visible.sync="blogFilesOpen" :before-close="cancel" width="1200px" append-to-body>
+      <el-form ref="form" :model="form" :rules="rules" label-position="top" label-width="80px">
+        <el-form-item>
+          <el-row>
+            <el-button size="mini" type="primary" @click="addFiles">添加文件</el-button>
+            <el-table :data="form.blogFilesNew" :border="true" style="width: 99.99%;">
+              <el-table-column align="center" min-width="20%" prop="pic" label="附件">
+                <template slot-scope="scope">
+                  <filesUpload v-model="scope.row.fileId" @handleFilesSuccess="filesSuccess" :is-show-tip="false" />
+                </template>
+              </el-table-column>
+              <el-table-column align="center" min-width="20%" prop="remark" label="文件信息">
+                <template slot-scope="scope">
+                  <el-row>
+                    <el-col :span="6"><div class="blogFilesInfoName">名称：</div></el-col>
+                    <el-col :span="18"><el-input v-model="scope.row.fileOriginName" disabled/></el-col>
+                  </el-row>
+                  <el-row style="margin-top: 4px;">
+                    <el-col :span="6"><div class="blogFilesInfoName">大小：</div></el-col>
+                    <el-col :span="18"><el-input v-model="scope.row.fileSize" disabled/></el-col>
+                  </el-row>
+                  <el-row style="margin-top: 4px;">
+                    <el-col :span="6"><div class="blogFilesInfoName">类型：</div></el-col>
+                    <el-col :span="18"><el-input v-model="scope.row.fileSuffix" disabled/></el-col>
+                  </el-row>
+                </template>
+              </el-table-column>
+              <el-table-column align="center" min-width="40%" prop="remark" label="备注">
+                <template slot-scope="scope">
+                  <el-input v-model="scope.row.remark" type="textarea" :rows="6" size="small" />
+                </template>
+              </el-table-column>
+              <el-table-column align="center" min-width="20%" label="操作">
+                <template slot-scope="scope">
+                  <el-button size="mini" plain @click="handleDownload(scope.row)">下载</el-button>
+                  <el-button size="mini" type="danger" plain @click="delFiles(scope.$index, scope.row)">删除</el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+          </el-row></el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="saveBlogFiles">保 存</el-button>
+        <el-button @click="cancel">取 消</el-button>
+      </div>
+    </el-dialog>
+
   </div>
 </template>
 
 <script>
+  import filesUpload from './components/filesUpload'
   import {
     listBlog,
     getBlog,
@@ -201,6 +252,9 @@
   export default {
     name: "Blog",
     dicts: ['cms_blog_status'],
+    components: {
+      filesUpload
+    },
     data() {
       return {
         // 遮罩层
@@ -225,6 +279,7 @@
         // 是否显示弹出层
         open: false,
         fileListOpen: false,
+        blogFilesOpen: false,
         // 查询参数
         queryParams: {
           pageNum: 1,
@@ -296,6 +351,7 @@
           cancelBlog(this.form).then(response => {});
           this.top = false;
           this.open = false;
+          this.blogFilesOpen = false;
           this.reset();
         }).catch(() => {});
       },
@@ -314,9 +370,11 @@
           views: null,
           status: "0",
           blogDesc: null,
+          blogFiles: null,
           blogPic: null,
           tagIds: [],
-          typeIds: []
+          typeIds: [],
+          blogFilesNew: []
         };
         this.resetForm("form");
       },
@@ -500,6 +558,99 @@
           }, 100);
         });
       },
+      /** 附件管理按钮操作 */
+      blogFiles(row) {
+        this.reset();
+        const id = row.id || this.ids
+        getBlog(id).then(response => {
+          this.typeOptions = response.types;
+          this.tagOptions = response.tags;
+          this.form = response.data;
+          this.form.blogFilesNew = []
+          if (response.data.blogFiles !== null) {
+            this.form.blogFilesNew = JSON.parse(response.data.blogFiles)
+          }
+          if (this.form.top == 1) {
+            this.top = true;
+          };
+          this.blogFilesOpen = true;
+        });
+      },
+      // 附件管理添加按钮
+      addFiles() {
+        this.form.blogFilesNew.push(
+          {
+            id: this.uuid(),
+            fileId: '',
+            fileOriginName: '',
+            fileSuffix: '',
+            fileSize: '',
+            filePath: '',
+            remark: ''
+          })
+      },
+      delFiles(index, row) {
+        this.$confirm('确认删除吗?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          // 点击确定的操作(调用接口)
+          var hasmembers = this.form.blogFilesNew
+          for (var i = 0; i < hasmembers.length; i++) {
+            if (row.id === hasmembers[i].id) {
+              this.form.blogFilesNew.splice(i, 1)
+            }
+          }
+        }).catch(() => {
+          // 点取消的提示
+          return
+        })
+      },
+      // 生成uuid
+      uuid() {
+        var d = new Date().getTime()
+        if (window.performance && typeof window.performance.now === 'function') {
+          d += performance.now() // use high-precision timer if available
+        }
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = (d + Math.random() * 16) % 16 | 0 // d是随机种子
+          d = Math.floor(d / 16)
+          return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16)
+        })
+        return uuid
+      },
+      filesSuccess(value){
+        this.form.blogFilesNew.forEach(item => {
+          if(item.fileId===value.fileId){
+            item.fileOriginName = value.fileOriginName
+            item.fileSuffix = value.fileSuffix
+            item.fileSize = value.fileSize
+            item.filePath = value.filePath
+          }
+        });
+      },
+      //保存文件
+      saveBlogFiles(){
+        if (this.form.blogFilesNew.length > 0) {
+          for (let i = 0; i < this.form.blogFilesNew.length; i++) {
+            const fileInfo = this.form.blogFilesNew[i]
+            if (fileInfo.fileId === '') {
+              this.$message.warning('请添加文件或删除空行！')
+              return false
+            } else if (fileInfo.remark === '') {
+              this.$message.warning('请添加文件备注！')
+              return false
+            }
+          }
+        }
+        this.form.blogFiles = JSON.stringify(this.form.blogFilesNew)
+        updateBlog(this.form).then(response => {
+          this.$modal.msgSuccess("保存成功");
+          this.blogFilesOpen = false;
+          this.getList();
+        });
+      },
       // 文件下载处理
       handleDownload(row) {
         var name = row.fileOriginName;
@@ -524,11 +675,15 @@
   };
 </script>
 
-<style>
+<style scoped lang="scss">
   .el-tag+.el-tag {
     margin-left: 10px;
   }
   .el-table .warning-row {
       background: #f8f8f9;
     }
+  .blogFilesInfoName {
+    text-align: center;
+    padding-top: 5px;
+  }
 </style>

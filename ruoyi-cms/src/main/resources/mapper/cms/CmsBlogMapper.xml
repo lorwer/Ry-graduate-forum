@@ -18,10 +18,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="status"    column="status"    />
         <result property="blogPic"    column="blog_pic"    />
         <result property="blogDesc"    column="blog_desc"    />
+        <result property="blogFiles"    column="blog_files"    />
     </resultMap>
 
     <sql id="selectCmsBlogVo">
-        select id, create_by, create_time, update_by, update_time, title, type, content, Top, views, status, blog_pic, blog_desc from cms_blog
+        select id, create_by, create_time, update_by, update_time, title, type, content, Top, views, status, blog_pic, blog_desc, blog_files from cms_blog
     </sql>
 
     <select id="selectCmsBlogList" parameterType="CmsBlog" resultMap="CmsBlogResult">
@@ -96,6 +97,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="status != null">status,</if>
             <if test="blogPic != null and blogPic != ''">blog_pic,</if>
             <if test="blogDesc != null and blogDesc != ''">blog_desc,</if>
+            <if test="blogFiles != null and blogFiles != ''">blog_files,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="createBy != null">#{createBy},</if>
@@ -110,6 +112,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="status != null">#{status},</if>
             <if test="blogPic != null and blogPic != ''">#{blogPic},</if>
             <if test="blogDesc != null and blogDesc != ''">#{blogDesc},</if>
+            <if test="blogFiles != null and blogFiles != ''">#{blogFiles},</if>
          </trim>
     </insert>
 
@@ -128,6 +131,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="status != null">status = #{status},</if>
             <if test="blogPic != null">blog_pic = #{blogPic},</if>
             <if test="blogDesc != null">blog_desc = #{blogDesc},</if>
+            <if test="blogFiles != null">blog_files = #{blogFiles},</if>
         </trim>
         where id = #{id}
     </update>
