@@ -2,7 +2,7 @@
 	<img alt="logo" src="ruoyi-ui/public/favicon.ico">
 </p>
 <h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">Blog</h1>
-<h4 align="center">基于RuoYi-Vue  v3.8.0平台开发的博客网站</h4>
+<h4 align="center">基于RuoYi-Vue  v3.8.0平台开发的考研论坛网站</h4>
 <p align="center">
 <a target="_blank" href="https://www.cnblogs.com/Ning-Blog/">
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTA4IiBoZWlnaHQ9IjIwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IuWNmuWuouWbrTogU21pbGVUb0NvZGUiPjx0aXRsZT7ljZrlrqLlm606IFNtaWxlVG9Db2RlPC90aXRsZT48bGluZWFyR3JhZGllbnQgaWQ9InMiIHgyPSIwIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYmJiIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PC9saW5lYXJHcmFkaWVudD48Y2xpcFBhdGggaWQ9InIiPjxyZWN0IHdpZHRoPSIxMDgiIGhlaWdodD0iMjAiIHJ4PSIzIiBmaWxsPSIjZmZmIi8+PC9jbGlwUGF0aD48ZyBjbGlwLXBhdGg9InVybCgjcikiPjxyZWN0IHdpZHRoPSI0MyIgaGVpZ2h0PSIyMCIgZmlsbD0iIzU1NSIvPjxyZWN0IHg9IjQzIiB3aWR0aD0iNjUiIGhlaWdodD0iMjAiIGZpbGw9IiM0YzEiLz48cmVjdCB3aWR0aD0iMTA4IiBoZWlnaHQ9IjIwIiBmaWxsPSJ1cmwoI3MpIi8+PC9nPjxnIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJWZXJkYW5hLEdlbmV2YSxEZWphVnUgU2FucyxzYW5zLXNlcmlmIiB0ZXh0LXJlbmRlcmluZz0iZ2VvbWV0cmljUHJlY2lzaW9uIiBmb250LXNpemU9IjExMCI+PHRleHQgYXJpYS1oaWRkZW49InRydWUiIHg9IjIyNSIgeT0iMTUwIiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iMzMwIj7ljZrlrqLlm608L3RleHQ+PHRleHQgeD0iMjI1IiB5PSIxNDAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiBmaWxsPSIjZmZmIiB0ZXh0TGVuZ3RoPSIzMzAiPuWNmuWuouWbrTwvdGV4dD48dGV4dCBhcmlhLWhpZGRlbj0idHJ1ZSIgeD0iNzQ1IiB5PSIxNTAiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiB0ZXh0TGVuZ3RoPSI1NTAiPlNtaWxlVG9Db2RlPC90ZXh0Pjx0ZXh0IHg9Ijc0NSIgeT0iMTQwIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgZmlsbD0iI2ZmZiIgdGV4dExlbmd0aD0iNTUwIj5TbWlsZVRvQ29kZTwvdGV4dD48L2c+PC9zdmc+" ></img>
@@ -15,7 +15,7 @@
 
 ## 介绍
 
-基于**RuoYi-Vue**前后端分离基础平台开发的**博客网站**。
+基于**RuoYi-Vue**前后端分离基础平台开发的**考研论坛网站**。
 
 👍👍 感谢若依❤️❤️ 
 
@@ -88,14 +88,14 @@ RuoYi-Vue是一款基于SpringBoot+Vue的前后端分离极速后台开发框架
 
 ## 新增功能
 
-1.  内容管理：管理博客网站所有内容。
-2.  文章管理：管理博客文章内容。
-3.  随笔管理：管理博客随笔内容。
-4.  分类管理：对博客分类的管理。
-5.  标签管理：对博客标签的管理。
-6.  留言管理：管理博客网站留言信息。
-7.  评论管理：管理博客评论信息。
-8.  文件管理：管理博客网站所有上传文件信息。
+1.  内容管理：管理考研论坛网站所有内容。
+2.  帖子管理：管理考研论坛帖子内容。
+3.  随笔管理：管理考研论坛随笔内容。
+4.  分类管理：对考研论坛分类的管理。
+5.  标签管理：对考研论坛标签的管理。
+6.  留言管理：管理考研论坛网站留言信息。
+7.  评论管理：管理考研论坛评论信息。
+8.  文件管理：管理考研论坛网站所有上传文件信息。
 
 ## 演示图
 
@@ -110,7 +110,7 @@ RuoYi-Vue是一款基于SpringBoot+Vue的前后端分离极速后台开发框架
     </tr>
     <tr>
         <td><img src="ruoyi-ui/public/systemImg/文档详情.png"/></td>
-        <td><img src="ruoyi-ui/public/systemImg/博客详情.png"/></td>
+        <td><img src="ruoyi-ui/public/systemImg/帖子详情.png"/></td>
     </tr>
 	<tr>
         <td><img src="ruoyi-ui/public/systemImg/评论.png"/></td>

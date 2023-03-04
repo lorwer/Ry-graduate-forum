@@ -24,7 +24,7 @@ public interface CmsBlogTypeMapper {
      */
     public int deleteBlogType(Long[] ids);
     /**
-     * 查询博客列表
+     * 查询帖子列表
      */
     public List<CmsBlogType> selectBlogTypeList(Long blogId);
     /**

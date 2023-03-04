@@ -35,7 +35,7 @@ export default {
   },
   data() {
     return {
-      title: '博客管理平台',
+      title: '考研论坛管理平台',
       logo: logoImg
     }
   }

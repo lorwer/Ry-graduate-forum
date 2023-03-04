@@ -22,7 +22,7 @@ public class CmsTag extends BaseEntity
     @Excel(name = "标签名称")
     private String tagName;
 
-    /** 博客数量 */
+    /** 帖子数量 */
     private int blogNum;
 
     public void setTagId(Long tagId) 

@@ -33,7 +33,7 @@
     </div>
 
     <div v-if="searchInput" class="search_input">
-      <el-input @focus="checkInput" @blur="notSearching()" class="search" placeholder="搜索博客"
+      <el-input @focus="checkInput" @blur="notSearching()" class="search" placeholder="搜索帖子"
         prefix-icon="el-icon-search" v-model="queryInfo.query" size="mini">
       </el-input>
       <ul v-if="searching">
@@ -54,7 +54,7 @@
         </div>
         <el-dropdown-menu slot="dropdown">
           <router-link target="_blank" to="/index">
-            <el-dropdown-item>管理博客</el-dropdown-item>
+            <el-dropdown-item>管理帖子</el-dropdown-item>
           </router-link>
           <el-dropdown-item divided @click.native="logout">
             <span>退出登录</span>
@@ -67,7 +67,7 @@
         <!-- <el-avatar class="avatar" src="avatar" @error="errorHandler">
             <i class="el-icon-s-custom" @click="tologin"/>
           </el-avatar> -->
-        <p class="avatar-Name" @click="tologin">登录|注册</p>
+        <p class="avatar-Name" @click="tologin">登录 | 注册</p>
       </div>
     </div>
   </el-header>
@@ -239,7 +239,7 @@
           return res;
         }
       },
-      // 跳转到博客详情页
+      // 跳转到帖子详情页
       getBlogInfo(blogId) {
         let routeUrl = this.$router.resolve({
           path: '/cms/main/blog',

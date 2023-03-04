@@ -26,7 +26,7 @@ public class CmsType extends BaseEntity
     @Excel(name = "分类图像")
     private String typePic;
 
-    /** 博客数量 */
+    /** 帖子数量 */
     private int blogNum;
 
     public void setTypeId(Long typeId) 

@@ -109,11 +109,11 @@ export default {
           }
         },
         legend: {
-          data: [ '文章','评论','留言']
+          data: [ '帖子','评论','留言']
         },
         series: [
         {
-          name: '文章',
+          name: '帖子',
           smooth: true,
           type: 'line',
           itemStyle: {

@@ -1,24 +1,24 @@
 # 项目相关配置
 ruoyi:
   # 名称
-  name: RuoYi
+  name: GraduateForum
   # 版本
-  version: 3.8.0
+  version: 0.0.1
   # 版权年份
-  copyrightYear: 2021
+  copyrightYear: 2023
   # 实例演示开关
   demoEnabled: true
   # 文件路径 示例（ Windows配置D:/ruoyi/uploadPath，Linux配置 /home/ruoyi/uploadPath）
-  profile: D:/ruoyi/uploadPath
+  profile: /mnt/data/data/files/ruoyi/uploadPath
   # 获取ip地址开关
-  addressEnabled: false
+  addressEnabled: true
   # 验证码类型 math 数组计算 char 字符验证
-  captchaType: math
+  captchaType: char
 
 # 开发环境配置
 server:
   # 服务器的HTTP端口，默认为8080
-  port: 8080
+  port: 8088
   servlet:
     # 应用的访问路径
     context-path: /

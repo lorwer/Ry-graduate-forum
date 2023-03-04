@@ -76,7 +76,7 @@ export const constantRoutes = [{
             component: (resolve) => require(['@/views/cms/components/cmsBlog'], resolve),
             name: 'blog',
             meta: {
-              title: '博客详情',
+              title: '帖子详情',
             }
           }
         ]

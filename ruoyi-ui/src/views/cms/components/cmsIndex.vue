@@ -141,7 +141,7 @@
         fullTypeList: [],
         fullTagList: [],
         recommendList: [],
-        selectMethod: '全部博客',
+        selectMethod: '全部帖子',
         typeId: -1,
         tagId: -1,
         selected: false,
@@ -209,7 +209,7 @@
 
     },
     methods: {
-      /** 获取博客列表 */
+      /** 获取帖子列表 */
       getBlogList() {
         let loadingInstance = Loading.service({
           target: ".left-item"
@@ -249,7 +249,7 @@
           return value2 - value1;
         }
       },
-      // 获取推荐博客列表
+      // 获取推荐帖子列表
       async getRecommendList() {
         cmsListRecommend(this.queryParams).then(response => {
           const {
@@ -259,7 +259,7 @@
           this.total = response.total;
         });
       },
-      // 获取博客类型列表
+      // 获取帖子类型列表
       async getTypeList() {
         getBlogDetail(this.$route.query.id).then(response => {
           for (let i = 0; i < response.types.length; i++) {
@@ -275,7 +275,7 @@
           this.typeList = response.types.slice(0, 4);
         });
       },
-      // 获取博客标签列表
+      // 获取帖子标签列表
       async getTagList() {
         getBlogDetail(this.$route.query.id).then(response => {
           const {
@@ -285,7 +285,7 @@
           this.tagList = response.tags.slice(0, 6);
         });
       },
-      // 跳转到博客详情页
+      // 跳转到帖子详情页
       getBlogInfo(blogId) {
         let routeUrl = this.$router.resolve({
           path: '/cms/main/blog',
@@ -304,7 +304,7 @@
       handleSizeChange(newSize) {
         this.queryInfo.pagesize = newSize
       },
-      // 按分类筛选博客
+      // 按分类筛选帖子
       async selectType(cmsType) {
         this.typeId = cmsType.typeId
         cmsListByTypeId(this.typeId).then(response => {
@@ -315,7 +315,7 @@
           this.selected = true
         });
       },
-      // 按标签筛选博客
+      // 按标签筛选帖子
       async selectTag(tag) {
         this.tagId = tag.tagId
         cmsListByTagId(this.tagId).then(response => {
@@ -326,12 +326,12 @@
           this.selected = true
         });
       },
-      // 更新博客列表
+      // 更新帖子列表
       updateBlogList() {
         this.selected = false
         this.typeId = -1
         this.tagId = -1
-        this.selectMethod = '全部博客'
+        this.selectMethod = '全部帖子'
         this.getBlogList()
       },
       // 得到所有的标签
@@ -432,7 +432,7 @@
     box-shadow: 0 0 20px 0 white;
     transition: all .2s;
   }
-  
+
   .left-item .pagination-container{
     background:rgb(255, 255, 255,0)
   }

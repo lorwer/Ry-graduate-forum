@@ -141,7 +141,7 @@ export default {
     ])
   },
   methods: {
-    // 获取博客详情信息
+    // 获取帖子详情信息
     async getBlogInfomation() {
       // 增加阅读量
       addBlogViews(this.$route.query.id);

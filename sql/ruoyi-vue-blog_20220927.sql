@@ -37,7 +37,7 @@ CREATE TABLE `cms_blog`  (
   `blog_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '简介',
   `blog_files` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci COMMENT '附件列表',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '博客信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '帖子信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of cms_blog
