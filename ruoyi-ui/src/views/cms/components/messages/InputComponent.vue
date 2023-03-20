@@ -40,7 +40,7 @@
       toId: {
         type: Number
       },
-      //类型，end(文章末尾处), comment(评论里),
+      //类型，end(帖子末尾处), comment(评论里),
       type: {
         type: String,
         // default: 'comment'

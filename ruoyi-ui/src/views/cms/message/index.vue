@@ -69,7 +69,7 @@
       <el-table-column label="点赞数量" align="center" prop="likeNum" />
       <el-table-column label="内容" align="center" prop="content" />
       <el-table-column label="留言类型：对人评论，对项目评论，对资源评论" align="center" prop="type" />
-      <el-table-column label="被留言者id，可以是人、项目、资源" align="center" prop="blogId" />
+      <el-table-column label="被留言者id，可以是人、项目、资源" align="center" prop="postId" />
       <el-table-column label="留言者id" align="center" prop="userId" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -114,7 +114,7 @@
                 <span v-show="mes.type=='1'" class="rp">的留言</span>
               </div>
               <div class="op">
-                <span @click="getBlogInfo(mes.id)" class="blog">查看</span>
+                <span @click="getPostInfo(mes.id)" class="post">查看</span>
                 <span> | </span>
                 <el-button type="text" @click="handleAdd(mes)" v-hasPermi="['cms:message:add']">回复</el-button>
                 <span v-show="!isAdmin&&mes.createBy!=name" style="margin-right: 39.43px;"></span>
@@ -143,8 +143,8 @@
         <!-- <el-form-item label="内容" prop="content"> -->
           <el-input v-model="form.content" type="textarea" maxlength="100" show-word-limit :placeholder="toName" />
         <!-- </el-form-item> -->
-        <!-- <el-form-item label="被留言者id，可以是人、项目、资源" prop="blogId">
-          <el-input v-model="form.blogId" placeholder="请输入被留言者id，可以是人、项目、资源" />
+        <!-- <el-form-item label="被留言者id，可以是人、项目、资源" prop="postId">
+          <el-input v-model="form.postId" placeholder="请输入被留言者id，可以是人、项目、资源" />
         </el-form-item>
         <el-form-item label="留言者id" prop="userId">
           <el-input v-model="form.userId" placeholder="请输入留言者id" />
@@ -204,7 +204,7 @@
           likeNum: null,
           content: null,
           type: null,
-          blogId: null,
+          postId: null,
           userId: null,
           delFlag: null,
           createBy: null,
@@ -266,7 +266,7 @@
           likeNum: null,
           content: null,
           type: null,
-          blogId: null,
+          postId: null,
           userId: null,
           createBy: null,
           createTime: null,
@@ -356,11 +356,11 @@
         }, `message_${new Date().getTime()}.xlsx`)
       },
       // 跳转到留言页
-      getBlogInfo(blogId) {
+      getPostInfo(postId) {
         let routeUrl = this.$router.resolve({
           path: '/cms/main/message',
           query: {
-            id: blogId
+            id: postId
           }
         });
         window.open(routeUrl.href, '_blank');
@@ -414,7 +414,7 @@
     margin-left: 10px;
   }
 
-  .blog {
+  .post {
     color: #349edf;
     margin-left: 10px;
     cursor: pointer;

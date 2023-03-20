@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.cms.post.mapper.CmsPostMapper">
+    
+    <resultMap type="CmsPost" id="CmsPostResult">
+        <result property="id"    column="id"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="title"    column="title"    />
+        <result property="type"    column="type"    />
+        <result property="content"    column="content"    />
+        <result property="top"    column="Top"    />
+        <result property="views"    column="views"    />
+        <result property="status"    column="status"    />
+        <result property="postPic"    column="post_pic"    />
+        <result property="postDesc"    column="post_desc"    />
+        <result property="postFiles"    column="post_files"    />
+    </resultMap>
+
+    <sql id="selectCmsPostVo">
+        select id, create_by, create_time, update_by, update_time, title, type, content, Top, views, status, post_pic, post_desc, post_files from cms_post
+    </sql>
+
+    <select id="selectCmsPostList" parameterType="CmsPost" resultMap="CmsPostResult">
+        <include refid="selectCmsPostVo"/>
+        <where>  
+            <if test="title != null  and title != ''"> and title like concat('%', #{title}, '%')</if>
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="content != null  and content != ''"> and content = #{content}</if>
+            <if test="top != null  and top != ''"> and Top = #{top}</if>
+            <if test="views != null "> and views = #{views}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+            <if test="createBy != null  and createBy != ''"> and create_by = #{createBy}</if>
+        </where>
+        ORDER BY Top DESC, create_time DESC
+    </select>
+    
+    <select id="selectCmsPostById" parameterType="Long" resultMap="CmsPostResult">
+        <include refid="selectCmsPostVo"/>
+        where id = #{id}
+    </select>
+    <select id="selectCmsPostListByTypeId" parameterType="Long" resultMap="CmsPostResult">
+        <include refid="selectCmsPostVo"/>
+        <where>
+            <if test="id != null  and id != ''"> and id in (SELECT post_id FROM cms_post_type WHERE type_id  = #{id})</if>
+        </where>
+    </select>
+    <select id="selectCmsPostListByTagId" parameterType="Long" resultMap="CmsPostResult">
+        <include refid="selectCmsPostVo"/>
+        <where>
+            <if test="id != null  and id != ''"> and id in (SELECT post_id FROM cms_post_tag WHERE tag_id  = #{id})</if>
+        </where>
+    </select>
+    <select id="selectCmsPostListRecommend" parameterType="CmsPost" resultMap="CmsPostResult">
+        <include refid="selectCmsPostVo"/>
+        <where>
+            <if test="title != null  and title != ''"> and title like concat('%', #{title}, '%')</if>
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="content != null  and content != ''"> and content = #{content}</if>
+            <if test="top != null  and top != ''"> and Top = #{top}</if>
+            <if test="views != null "> and views = #{views}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+            <if test="createBy != null  and createBy != ''"> and create_by = #{createBy}</if>
+        </where>
+        ORDER BY views DESC, create_time DESC
+    </select>
+    <select id="selectCmsPostListBetweenCreateTime" resultType="com.ruoyi.cms.post.domain.CmsPost">
+        <include refid="selectCmsPostVo"/>
+        <where>
+            <if test="title != null  and title != ''"> and title like concat('%', #{title}, '%')</if>
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="top != null  and top != ''"> and Top = #{top}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+            <if test="createTimeBegin != null  and createTimeBegin != ''"> and create_time >= #{createTimeBegin}</if>
+            <if test="createTimeEnd != null  and createTimeEnd != ''"> and create_time &lt;= #{createTimeEnd}</if>
+            <if test="createBy != null  and createBy != ''"> and create_by = #{createBy}</if>
+        </where>
+        ORDER BY Top DESC, create_time DESC
+    </select>
+
+    <insert id="insertCmsPost" parameterType="CmsPost" useGeneratedKeys="true" keyProperty="id">
+        insert into cms_post
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="title != null and title != ''">title,</if>
+            <if test="type != null and type != ''">type,</if>
+            <if test="content != null">content,</if>
+            <if test="top != null">Top,</if>
+            <if test="views != null">views,</if>
+            <if test="status != null">status,</if>
+            <if test="postPic != null and postPic != ''">post_pic,</if>
+            <if test="postDesc != null and postDesc != ''">post_desc,</if>
+            <if test="postFiles != null and postFiles != ''">post_files,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="title != null and title != ''">#{title},</if>
+            <if test="type != null and type != ''">#{type},</if>
+            <if test="content != null">#{content},</if>
+            <if test="top != null">#{top},</if>
+            <if test="views != null">#{views},</if>
+            <if test="status != null">#{status},</if>
+            <if test="postPic != null and postPic != ''">#{postPic},</if>
+            <if test="postDesc != null and postDesc != ''">#{postDesc},</if>
+            <if test="postFiles != null and postFiles != ''">#{postFiles},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCmsPost" parameterType="CmsPost">
+        update cms_post
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="title != null and title != ''">title = #{title},</if>
+            <if test="type != null and type != ''">type = #{type},</if>
+            <if test="content != null">content = #{content},</if>
+            <if test="top != null">Top = #{top},</if>
+            <if test="views != null">views = #{views},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="postPic != null">post_pic = #{postPic},</if>
+            <if test="postDesc != null">post_desc = #{postDesc},</if>
+            <if test="postFiles != null">post_files = #{postFiles},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCmsPostById" parameterType="Long">
+        delete from cms_post where id = #{id}
+    </delete>
+
+    <delete id="deleteCmsPostByIds" parameterType="String">
+        delete from cms_post where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

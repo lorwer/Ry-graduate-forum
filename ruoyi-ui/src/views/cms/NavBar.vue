@@ -1,6 +1,6 @@
 <template>
   <el-header :style="'margin-bottom:'+ headerBottom +'px'">
-    <h2 class="logo"><svg-icon icon-class="EarOfWheat" />  Blog</h2>
+    <h2 class="logo"><svg-icon icon-class="EarOfWheat" />  Forum</h2>
     <div class="bg-purple-light">
       <el-menu :default-active="activeIndex" router class="el-menu-demo" mode="horizontal" style="border: none;"
         background-color="rgba(0,0,0,0)" text-color="#fff" active-text-color="#ffd04b">
@@ -37,9 +37,9 @@
         prefix-icon="el-icon-search" v-model="queryInfo.query" size="mini">
       </el-input>
       <ul v-if="searching">
-        <li class="animate__animated animate__fadeInDown search-blog" v-for="blog in searchList" :key="blog.id"
-          @click="getBlogInfo(blog.id)">
-          <a><span v-html="blog.title"></span></a>
+        <li class="animate__animated animate__fadeInDown search-post" v-for="post in searchList" :key="post.id"
+          @click="getPostInfo(post.id)">
+          <a><span v-html="post.title"></span></a>
         </li>
       </ul>
     </div>
@@ -82,8 +82,8 @@
   } from '@/utils/auth'
   import 'element-ui/lib/theme-chalk/display.css'
   import {
-    cmsListBlog,
-  } from "@/api/cms/blog";
+    cmsListPost,
+  } from "@/api/cms/post";
   export default {
     name: 'cmsNavBar',
     data() {
@@ -113,7 +113,7 @@
           },
           {
             id: 3,
-            authName: '文档',
+            authName: '个人主页',
             path: '/cms/doucument',
             icon: 'el-icon-document',
           },
@@ -144,7 +144,7 @@
             clearTimeout(this.timer)
           }
           this.timer = setTimeout(() => {
-            this.searchBlog()
+            this.searchPost()
           }, 300)
         }
       }
@@ -210,13 +210,13 @@
       errorHandler() {
         return true
       },
-      async searchBlog() {
+      async searchPost() {
         if (this.queryInfo.query === '') {
           this.searching = false
           return
         }
         this.queryParams.title = this.queryInfo.query;
-        cmsListBlog(this.queryParams).then(response => {
+        cmsListPost(this.queryParams).then(response => {
           let lsitSize = response.rows.length;
           if(lsitSize>0){
             for(let i = 0;i<lsitSize;i++){
@@ -240,11 +240,11 @@
         }
       },
       // 跳转到帖子详情页
-      getBlogInfo(blogId) {
+      getPostInfo(postId) {
         let routeUrl = this.$router.resolve({
-          path: '/cms/main/blog',
+          path: '/cms/main/post',
           query: {
-            id: blogId
+            id: postId
           }
         });
         window.open(routeUrl.href, '_blank');
@@ -338,7 +338,7 @@
   }
 
 
-  .search-blog {
+  .search-post {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

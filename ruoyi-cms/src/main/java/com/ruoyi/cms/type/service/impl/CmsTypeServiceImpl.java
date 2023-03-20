@@ -2,7 +2,7 @@ package com.ruoyi.cms.type.service.impl;
 
 import java.util.List;
 
-import com.ruoyi.cms.blog.mapper.CmsBlogTypeMapper;
+import com.ruoyi.cms.post.mapper.CmsPostTypeMapper;
 import com.ruoyi.cms.fileInfo.service.ISysFileInfoService;
 import com.ruoyi.common.exception.ServiceException;
 import com.ruoyi.common.utils.DateUtils;
@@ -28,7 +28,7 @@ public class CmsTypeServiceImpl implements ICmsTypeService
     private ISysFileInfoService sysFileInfoService;
 
     @Autowired
-    private CmsBlogTypeMapper cmsBlogTypeMapper;
+    private CmsPostTypeMapper cmsPostTypeMapper;
 
     /**
      * 查询分类管理
@@ -53,8 +53,8 @@ public class CmsTypeServiceImpl implements ICmsTypeService
     {
         List<CmsType> cmsTypeList = cmsTypeMapper.selectCmsTypeList(cmsType);
         for (CmsType type : cmsTypeList) {
-            int blogNum = cmsBlogTypeMapper.countBlogByTypeId(type.getTypeId());
-            type.setBlogNum(blogNum);
+            int postNum = cmsPostTypeMapper.countPostByTypeId(type.getTypeId());
+            type.setPostNum(postNum);
         }
         return cmsTypeList;
     }
@@ -119,8 +119,8 @@ public class CmsTypeServiceImpl implements ICmsTypeService
                 String FileName = typePic.substring(newFileNameSeparatorIndex + 1).toLowerCase();
                 sysFileInfoService.deleteSysFileInfoByFileObjectName(FileName);
             }
-            //删除分类文章关联表信息
-            cmsBlogTypeMapper.deleteBlogTypeByTypeId(typeId);
+            //删除分类帖子关联表信息
+            cmsPostTypeMapper.deletePostTypeByTypeId(typeId);
         }
         return cmsTypeMapper.deleteCmsTypeByTypeIds(typeIds);
     }
@@ -140,8 +140,8 @@ public class CmsTypeServiceImpl implements ICmsTypeService
             String FileName = typePic.substring(newFileNameSeparatorIndex + 1).toLowerCase();
             sysFileInfoService.deleteSysFileInfoByFileObjectName(FileName);
         }
-        //删除分类文章关联表信息
-        cmsBlogTypeMapper.deleteBlogTypeByTypeId(typeId);
+        //删除分类帖子关联表信息
+        cmsPostTypeMapper.deletePostTypeByTypeId(typeId);
         return cmsTypeMapper.deleteCmsTypeByTypeId(typeId);
     }
 

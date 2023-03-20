@@ -99,8 +99,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
                 .antMatchers("/profile/**").permitAll()
                 // 对于登录login 注册register 验证码captchaImage 允许匿名访问
                 .antMatchers("/login", "/register", "/captchaImage").anonymous()
-                // 首页获取文章信息 允许匿名访问
-                .antMatchers("/cms/blog/cms/**").permitAll()
+                // 首页获取帖子信息 允许匿名访问
+                .antMatchers("/cms/post/cms/**").permitAll()
                 // 首页获取留言,评论信息 允许匿名访问
                 .antMatchers("/cms/message/cms/**","/cms/comment/cms/**").permitAll()
                 .antMatchers(

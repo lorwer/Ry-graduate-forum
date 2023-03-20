@@ -38,22 +38,22 @@ import BarChart from './dashboard/BarChartCms'
 
 const lineChartData = {
   views: {
-    blogColor: 'rgba(243, 248, 255, 0)',
+    postColor: 'rgba(243, 248, 255, 0)',
     commentColor: 'rgba(243, 248, 255, 0)',
     messageColor: 'rgba(243, 248, 255, 0)',
   },
-  blog: {
-    blogColor: 'rgba(56, 136, 250, 0.2)',
+  post: {
+    postColor: 'rgba(56, 136, 250, 0.2)',
     commentColor: 'rgba(243, 248, 255, 0)',
     messageColor: 'rgba(243, 248, 255, 0)',
   },
   comment: {
-    blogColor: 'rgba(243, 248, 255, 0)',
+    postColor: 'rgba(243, 248, 255, 0)',
     commentColor: 'rgba(255, 0, 90, 0.2)',
     messageColor: 'rgba(243, 248, 255, 0)',
   },
   message: {
-    blogColor: 'rgba(243, 248, 255, 0)',
+    postColor: 'rgba(243, 248, 255, 0)',
     commentColor: 'rgba(243, 248, 255, 0)',
     messageColor: 'rgba(52, 191, 163, 0.2)',
   }

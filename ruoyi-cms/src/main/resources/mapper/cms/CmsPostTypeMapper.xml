@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ruoyi.cms.post.mapper.CmsPostTypeMapper">
+    <resultMap type="CmsPostType" id="postTypeResult">
+        <result property="typeId"       column="type_id"       />
+        <result property="postId"    column="post_id"    />
+    </resultMap>
+
+    <insert id="batchPostType">
+        insert into cms_post_type(type_id, post_id) values
+        <foreach item="item" index="index" collection="list" separator=",">
+            (#{item.typeId},#{item.postId})
+        </foreach>
+    </insert>
+
+    <delete id="deletePostTypeByPostId" parameterType="Long">
+        delete from cms_post_type where post_id=#{postId}
+    </delete>
+
+    <delete id="deletePostType" parameterType="Long">
+        delete from cms_post_type where post_id in
+        <foreach collection="array" item="postId" open="(" separator="," close=")">
+            #{postId}
+        </foreach>
+    </delete>
+    <delete id="deletePostTypeByTypeId" parameterType="Long">
+        delete from cms_post_type where type_id=#{typeId}
+    </delete>
+
+    <select id="selectPostTypeList" parameterType="Long" resultMap="postTypeResult">
+        select type_id, post_id from cms_post_type where post_id = #{postId}
+    </select>
+    <select id="countPostByTypeId" parameterType="Long" resultType="java.lang.Integer">
+        select count(*) from cms_post_type where type_id=#{typeId}
+    </select>
+</mapper>

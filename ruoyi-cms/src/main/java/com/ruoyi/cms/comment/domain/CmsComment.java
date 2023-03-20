@@ -42,7 +42,7 @@ public class CmsComment extends BaseEntity
 
     /** 被评论者id，可以是人、项目、资源 */
     @Excel(name = "被评论者id，可以是人、项目、资源")
-    private Long blogId;
+    private Long postId;
 
     /** 删除标志（0代表存在 1代表删除） */
     private String delFlag;
@@ -117,14 +117,14 @@ public class CmsComment extends BaseEntity
     {
         return type;
     }
-    public void setBlogId(Long blogId) 
+    public void setPostId(Long postId) 
     {
-        this.blogId = blogId;
+        this.postId = postId;
     }
 
-    public Long getBlogId() 
+    public Long getPostId() 
     {
-        return blogId;
+        return postId;
     }
     public void setDelFlag(String delFlag) 
     {
@@ -186,7 +186,7 @@ public class CmsComment extends BaseEntity
             .append("likeNum", getLikeNum())
             .append("content", getContent())
             .append("type", getType())
-            .append("blogId", getBlogId())
+            .append("postId", getPostId())
             .append("delFlag", getDelFlag())
             .append("userId", getUserId())
             .append("createBy", getCreateBy())

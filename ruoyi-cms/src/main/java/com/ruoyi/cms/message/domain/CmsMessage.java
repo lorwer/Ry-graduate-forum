@@ -42,7 +42,7 @@ public class CmsMessage extends BaseEntity
 
     /** 被留言者id，可以是人、项目、资源 */
     @Excel(name = "被留言者id，可以是人、项目、资源")
-    private Long blogId;
+    private Long postId;
 
     /** 留言者id */
     @Excel(name = "留言者id")
@@ -117,14 +117,14 @@ public class CmsMessage extends BaseEntity
     {
         return type;
     }
-    public void setBlogId(Long blogId) 
+    public void setPostId(Long postId) 
     {
-        this.blogId = blogId;
+        this.postId = postId;
     }
 
-    public Long getBlogId() 
+    public Long getPostId() 
     {
-        return blogId;
+        return postId;
     }
     public void setUserId(Long userId) 
     {
@@ -185,7 +185,7 @@ public class CmsMessage extends BaseEntity
             .append("likeNum", getLikeNum())
             .append("content", getContent())
             .append("type", getType())
-            .append("blogId", getBlogId())
+            .append("postId", getPostId())
             .append("userId", getUserId())
             .append("delFlag", getDelFlag())
             .append("avatar",getAvatar())

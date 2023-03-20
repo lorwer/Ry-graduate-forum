@@ -1,12 +1,12 @@
 package com.ruoyi.cms.charts.controller;
 /**
- * @program: ruo-yi-vue-blog
+ * @program: ruo-yi-vue-forum
  * @Author: WangNing
  * @Description: 〈图表后台接口〉
  * @Date: 2022/4/25 10:37
  */
 
-import com.ruoyi.cms.blog.domain.CmsBlog;
+import com.ruoyi.cms.post.domain.CmsPost;
 import com.ruoyi.cms.charts.service.IChartService;
 import com.ruoyi.cms.comment.domain.CmsComment;
 import com.ruoyi.cms.comment.service.ICmsCommentService;
@@ -54,12 +54,12 @@ public class ChartController extends BaseController {
     private SysPermissionService permissionService;
 
     /**
-     * 查询总阅读量/文章总数/评论总数/留言总数
+     * 查询总阅读量/帖子总数/评论总数/留言总数
      */
     @GetMapping("/total")
     public Map total() {
         Map total = new HashMap();
-        CmsBlog cmsBlog = new CmsBlog();
+        CmsPost cmsPost = new CmsPost();
         CmsComment cmsComment = new CmsComment();
         CmsMessage cmsMessage = new CmsMessage();
         int views = 0;
@@ -67,19 +67,19 @@ public class ChartController extends BaseController {
         // 角色集合
         Set<String> roles = permissionService.getRolePermission(getLoginUser().getUser());
         if (!SecurityUtils.isAdmin(getUserId()) && !roles.contains("admin") && !roles.contains("cms")) {
-            cmsBlog.setCreateBy(getUsername());
+            cmsPost.setCreateBy(getUsername());
         }
-        cmsBlog.setType("1");
-        List<CmsBlog> blogList = chartService.selectList(cmsBlog);
-        for (CmsBlog blog : blogList) {
-            views += blog.getViews();
+        cmsPost.setType("1");
+        List<CmsPost> postList = chartService.selectList(cmsPost);
+        for (CmsPost post : postList) {
+            views += post.getViews();
         }
         cmsComment.setDelFlag("0");
         List<CmsComment> commentList = cmsCommentService.selectCmsCommentList(cmsComment);
         cmsMessage.setDelFlag("0");
         List<CmsMessage> messageList = cmsMessageService.selectCmsMessageList(cmsMessage);
         total.put("views", views);
-        total.put("blog", blogList.size());
+        total.put("post", postList.size());
         total.put("comment", commentList.size());
         total.put("message", messageList.size());
         return total;
@@ -95,9 +95,9 @@ public class ChartController extends BaseController {
         Map lineChart = new HashMap();
         List datex = new ArrayList();
         List commentData = new ArrayList();
-        List blogData = new ArrayList();
+        List postData = new ArrayList();
         List messageData = new ArrayList();
-        CmsBlog cmsBlog = new CmsBlog();
+        CmsPost cmsPost = new CmsPost();
         CmsComment cmsComment = new CmsComment();
         CmsMessage cmsMessage = new CmsMessage();
         Date date = new Date();
@@ -132,16 +132,16 @@ public class ChartController extends BaseController {
         // 角色集合
         Set<String> roles = permissionService.getRolePermission(getLoginUser().getUser());
         if (!SecurityUtils.isAdmin(getUserId()) && !roles.contains("admin") && !roles.contains("cms")) {
-            cmsBlog.setCreateBy(getUsername());
+            cmsPost.setCreateBy(getUsername());
         }
-        cmsBlog.setType("1");
-        blogData.add(chartService.selectListBetweenCreateTime(cmsBlog,sf.format(MonBegin),sf.format(MonEnd)).size());
-        blogData.add(chartService.selectListBetweenCreateTime(cmsBlog,sf.format(TueBegin),sf.format(TueEnd)).size());
-        blogData.add(chartService.selectListBetweenCreateTime(cmsBlog,sf.format(WedBegin),sf.format(WedEnd)).size());
-        blogData.add(chartService.selectListBetweenCreateTime(cmsBlog,sf.format(ThuBegin),sf.format(ThuEnd)).size());
-        blogData.add(chartService.selectListBetweenCreateTime(cmsBlog,sf.format(FriBegin),sf.format(FriEnd)).size());
-        blogData.add(chartService.selectListBetweenCreateTime(cmsBlog,sf.format(SatBegin),sf.format(SatEnd)).size());
-        blogData.add(chartService.selectListBetweenCreateTime(cmsBlog,sf.format(SunBegin),sf.format(SunEnd)).size());
+        cmsPost.setType("1");
+        postData.add(chartService.selectListBetweenCreateTime(cmsPost,sf.format(MonBegin),sf.format(MonEnd)).size());
+        postData.add(chartService.selectListBetweenCreateTime(cmsPost,sf.format(TueBegin),sf.format(TueEnd)).size());
+        postData.add(chartService.selectListBetweenCreateTime(cmsPost,sf.format(WedBegin),sf.format(WedEnd)).size());
+        postData.add(chartService.selectListBetweenCreateTime(cmsPost,sf.format(ThuBegin),sf.format(ThuEnd)).size());
+        postData.add(chartService.selectListBetweenCreateTime(cmsPost,sf.format(FriBegin),sf.format(FriEnd)).size());
+        postData.add(chartService.selectListBetweenCreateTime(cmsPost,sf.format(SatBegin),sf.format(SatEnd)).size());
+        postData.add(chartService.selectListBetweenCreateTime(cmsPost,sf.format(SunBegin),sf.format(SunEnd)).size());
         cmsComment.setDelFlag("0");
         commentData.add(chartService.selectCmsCommentListBetweenCreateTime(cmsComment,sf.format(MonBegin),sf.format(MonEnd)).size());
         commentData.add(chartService.selectCmsCommentListBetweenCreateTime(cmsComment,sf.format(TueBegin),sf.format(TueEnd)).size());
@@ -159,7 +159,7 @@ public class ChartController extends BaseController {
         messageData.add(chartService.selectCmsMessageListBetweenCreateTime(cmsMessage,sf.format(SatBegin),sf.format(SatEnd)).size());
         messageData.add(chartService.selectCmsMessageListBetweenCreateTime(cmsMessage,sf.format(SunBegin),sf.format(SunEnd)).size());
         lineChart.put("datex", datex);
-        lineChart.put("blogData", blogData);
+        lineChart.put("postData", postData);
         lineChart.put("commentData", commentData);
         lineChart.put("messageData", messageData);
         return lineChart;
@@ -184,7 +184,7 @@ public class ChartController extends BaseController {
             Map typeMap = new HashMap();
             type.add(cType.getTypeName());
             typeMap.put("name",cType.getTypeName());
-            typeMap.put("value",cType.getBlogNum());
+            typeMap.put("value",cType.getPostNum());
             data.add(typeMap);
         }
         pieChart.put("type", type);
@@ -207,7 +207,7 @@ public class ChartController extends BaseController {
         }
         List<CmsTag> list = cmsTagService.selectCmsTagList(cmsTag);
         for (CmsTag cTag : list) {
-            tag.add(cTag.getTagName()+" "+String.valueOf(cTag.getBlogNum()));
+            tag.add(cTag.getTagName()+" "+String.valueOf(cTag.getPostNum()));
         }
         tagChart.put("tag", tag);
         return tagChart;
@@ -223,7 +223,7 @@ public class ChartController extends BaseController {
         Map essayChart = new HashMap();
         List datex = new ArrayList();
         List essayData = new ArrayList();
-        CmsBlog cmsBlog = new CmsBlog();
+        CmsPost cmsPost = new CmsPost();
         Date date = new Date();
         //Mon
         Date MonBegin = getFrontDayBegin(date, 6);
@@ -256,20 +256,20 @@ public class ChartController extends BaseController {
         // 角色集合
         Set<String> roles = permissionService.getRolePermission(getLoginUser().getUser());
         if (!SecurityUtils.isAdmin(getUserId()) && !roles.contains("admin") && !roles.contains("cms")) {
-            cmsBlog.setCreateBy(getUsername());
+            cmsPost.setCreateBy(getUsername());
         }
-        cmsBlog.setType("2");
-        List<CmsBlog> blogList = chartService.selectList(cmsBlog);
-        essayData.add(chartService.selectListBetweenCreateTime(cmsBlog,sf.format(MonBegin),sf.format(MonEnd)).size());
-        essayData.add(chartService.selectListBetweenCreateTime(cmsBlog,sf.format(TueBegin),sf.format(TueEnd)).size());
-        essayData.add(chartService.selectListBetweenCreateTime(cmsBlog,sf.format(WedBegin),sf.format(WedEnd)).size());
-        essayData.add(chartService.selectListBetweenCreateTime(cmsBlog,sf.format(ThuBegin),sf.format(ThuEnd)).size());
-        essayData.add(chartService.selectListBetweenCreateTime(cmsBlog,sf.format(FriBegin),sf.format(FriEnd)).size());
-        essayData.add(chartService.selectListBetweenCreateTime(cmsBlog,sf.format(SatBegin),sf.format(SatEnd)).size());
-        essayData.add(chartService.selectListBetweenCreateTime(cmsBlog,sf.format(SunBegin),sf.format(SunEnd)).size());
+        cmsPost.setType("2");
+        List<CmsPost> postList = chartService.selectList(cmsPost);
+        essayData.add(chartService.selectListBetweenCreateTime(cmsPost,sf.format(MonBegin),sf.format(MonEnd)).size());
+        essayData.add(chartService.selectListBetweenCreateTime(cmsPost,sf.format(TueBegin),sf.format(TueEnd)).size());
+        essayData.add(chartService.selectListBetweenCreateTime(cmsPost,sf.format(WedBegin),sf.format(WedEnd)).size());
+        essayData.add(chartService.selectListBetweenCreateTime(cmsPost,sf.format(ThuBegin),sf.format(ThuEnd)).size());
+        essayData.add(chartService.selectListBetweenCreateTime(cmsPost,sf.format(FriBegin),sf.format(FriEnd)).size());
+        essayData.add(chartService.selectListBetweenCreateTime(cmsPost,sf.format(SatBegin),sf.format(SatEnd)).size());
+        essayData.add(chartService.selectListBetweenCreateTime(cmsPost,sf.format(SunBegin),sf.format(SunEnd)).size());
         essayChart.put("datex", datex);
         essayChart.put("essayData", essayData);
-        essayChart.put("total", blogList.size());
+        essayChart.put("total", postList.size());
         return essayChart;
     }
 

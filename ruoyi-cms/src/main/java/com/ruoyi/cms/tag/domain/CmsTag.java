@@ -23,7 +23,7 @@ public class CmsTag extends BaseEntity
     private String tagName;
 
     /** 帖子数量 */
-    private int blogNum;
+    private int postNum;
 
     public void setTagId(Long tagId) 
     {
@@ -44,12 +44,12 @@ public class CmsTag extends BaseEntity
         return tagName;
     }
 
-    public int getBlogNum() {
-        return blogNum;
+    public int getPostNum() {
+        return postNum;
     }
 
-    public void setBlogNum(int blogNum) {
-        this.blogNum = blogNum;
+    public void setPostNum(int postNum) {
+        this.postNum = postNum;
     }
 
     @Override
@@ -61,7 +61,7 @@ public class CmsTag extends BaseEntity
             .append("updateBy", getUpdateBy())
             .append("updateTime", getUpdateTime())
             .append("tagName", getTagName())
-                .append("blogNum", getBlogNum())
+                .append("postNum", getPostNum())
             .toString();
     }
 }

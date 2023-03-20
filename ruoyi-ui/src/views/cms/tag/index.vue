@@ -66,7 +66,7 @@
       <el-table-column type="selection" width="55" align="center" />
       <!-- <el-table-column label="标签ID" align="center" prop="tagId" /> -->
       <el-table-column label="标签名称" align="center" prop="tagName" />
-      <el-table-column label="帖子数量" align="center" prop="blogNum" />
+      <el-table-column label="帖子数量" align="center" prop="postNum" />
       <el-table-column label="创建者" align="center" prop="createBy" />
       <el-table-column label="创建时间" align="center" prop="createTime" width="100">
         <template slot-scope="scope">

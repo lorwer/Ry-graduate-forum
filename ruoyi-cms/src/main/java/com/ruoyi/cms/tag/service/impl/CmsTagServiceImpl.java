@@ -2,7 +2,7 @@ package com.ruoyi.cms.tag.service.impl;
 
 import java.util.List;
 
-import com.ruoyi.cms.blog.mapper.CmsBlogTagMapper;
+import com.ruoyi.cms.post.mapper.CmsPostTagMapper;
 import com.ruoyi.common.exception.ServiceException;
 import com.ruoyi.common.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class CmsTagServiceImpl implements ICmsTagService
     private CmsTagMapper cmsTagMapper;
 
     @Autowired
-    private CmsBlogTagMapper cmsBlogTagMapper;
+    private CmsPostTagMapper cmsPostTagMapper;
 
     /**
      * 查询标签管理
@@ -49,8 +49,8 @@ public class CmsTagServiceImpl implements ICmsTagService
     {
         List<CmsTag> cmsTagList = cmsTagMapper.selectCmsTagList(cmsTag);
         for (CmsTag tag : cmsTagList) {
-            int blogNum = cmsBlogTagMapper.countBlogByTagId(tag.getTagId());
-            tag.setBlogNum(blogNum);
+            int postNum = cmsPostTagMapper.countPostByTagId(tag.getTagId());
+            tag.setPostNum(postNum);
         }
         return cmsTagList;
     }
@@ -103,8 +103,8 @@ public class CmsTagServiceImpl implements ICmsTagService
     public int deleteCmsTagByTagIds(Long[] tagIds)
     {
         for (Long tagId : tagIds) {
-            //删除标签文章关联表信息
-            cmsBlogTagMapper.deleteBlogTagByTagId(tagId);
+            //删除标签帖子关联表信息
+            cmsPostTagMapper.deletePostTagByTagId(tagId);
         }
         return cmsTagMapper.deleteCmsTagByTagIds(tagIds);
     }
@@ -118,8 +118,8 @@ public class CmsTagServiceImpl implements ICmsTagService
     @Override
     public int deleteCmsTagByTagId(Long tagId)
     {
-        //删除标签文章关联表信息
-        cmsBlogTagMapper.deleteBlogTagByTagId(tagId);
+        //删除标签帖子关联表信息
+        cmsPostTagMapper.deletePostTagByTagId(tagId);
         return cmsTagMapper.deleteCmsTagByTagId(tagId);
     }
 }

@@ -37,7 +37,7 @@ export default {
     return {
       chart: null,
       datex:['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      blogData: [100, 120, 161, 134, 105, 160, 165],
+      postData: [100, 120, 161, 134, 105, 160, 165],
       commentData: [120, 82, 91, 154, 162, 140, 145],
       messageData: [100, 72, 191, 54, 62, 100, 105]
     }
@@ -69,14 +69,14 @@ export default {
     getLineChartData(){
       lineChart().then(response => {
         this.datex = response.datex;
-        this.blogData = response.blogData;
+        this.postData = response.postData;
         this.commentData = response.commentData;
         this.messageData = response.messageData;
         this.chart = echarts.init(this.$el, 'macarons')
         this.setOptions(this.chartData)
       });
     },
-    setOptions({ blogColor, commentColor, messageColor } = {}) {
+    setOptions({ postColor, commentColor, messageColor } = {}) {
       this.chart.setOption({
         xAxis: {
           data: this.datex,
@@ -124,11 +124,11 @@ export default {
                 width: 2
               },
               areaStyle: {
-                color: blogColor
+                color: postColor
               }
             }
           },
-          data: this.blogData,
+          data: this.postData,
           animationDuration: 2800,
           animationEasing: 'quadraticOut'
         },

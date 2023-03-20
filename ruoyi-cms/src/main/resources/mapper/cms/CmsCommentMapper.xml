@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="likeNum"    column="like_num"    />
         <result property="content"    column="content"    />
         <result property="type"    column="type"    />
-        <result property="blogId"    column="blog_id"    />
+        <result property="postId"    column="post_id"    />
         <result property="delFlag"    column="del_flag"    />
         <result property="userId"    column="user_id"    />
         <result property="createBy"    column="create_by"    />
@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectCmsCommentVo">
-        select id, parent_id, main_id, like_num, content, type, blog_id, del_flag, user_id, create_by, create_time, update_by, update_time from cms_comment
+        select id, parent_id, main_id, like_num, content, type, post_id, del_flag, user_id, create_by, create_time, update_by, update_time from cms_comment
     </sql>
 
     <select id="selectCmsCommentList" parameterType="CmsComment" resultMap="CmsCommentResult">
@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="likeNum != null "> and like_num = #{likeNum}</if>
             <if test="content != null  and content != ''"> and content like concat('%', #{content}, '%')</if>
             <if test="type != null  and type != ''"> and type = #{type}</if>
-            <if test="blogId != null "> and blog_id = #{blogId}</if>
+            <if test="postId != null "> and post_id = #{postId}</if>
             <if test="userId != null "> and user_id = #{userId}</if>
             <if test="delFlag != null  and delFlag != ''"> and del_flag = #{delFlag}</if>
             <if test="createBy != null  and createBy != ''"> and create_by = #{createBy}</if>
@@ -52,7 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="likeNum != null "> and like_num = #{likeNum}</if>
             <if test="content != null  and content != ''"> and content like concat('%', #{content}, '%')</if>
             <if test="type != null  and type != ''"> and type = #{type}</if>
-            <if test="blogId != null "> and blog_id = #{blogId}</if>
+            <if test="postId != null "> and post_id = #{postId}</if>
             <if test="userId != null "> and user_id = #{userId}</if>
             <if test="delFlag != null  and delFlag != ''"> and del_flag = #{delFlag}</if>
             <if test="createBy != null  and createBy != ''"> and create_by = #{createBy}</if>
@@ -77,7 +77,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="likeNum != null">like_num,</if>
             <if test="content != null">content,</if>
             <if test="type != null">type,</if>
-            <if test="blogId != null">blog_id,</if>
+            <if test="postId != null">post_id,</if>
             <if test="delFlag != null">del_flag,</if>
             <if test="userId != null">user_id,</if>
             <if test="createBy != null">create_by,</if>
@@ -91,7 +91,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="likeNum != null">#{likeNum},</if>
             <if test="content != null">#{content},</if>
             <if test="type != null">#{type},</if>
-            <if test="blogId != null">#{blogId},</if>
+            <if test="postId != null">#{postId},</if>
             <if test="delFlag != null">#{delFlag},</if>
             <if test="userId != null">#{userId},</if>
             <if test="createBy != null">#{createBy},</if>
@@ -109,7 +109,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="likeNum != null">like_num = #{likeNum},</if>
             <if test="content != null">content = #{content},</if>
             <if test="type != null">type = #{type},</if>
-            <if test="blogId != null">blog_id = #{blogId},</if>
+            <if test="postId != null">post_id = #{postId},</if>
             <if test="delFlag != null">del_flag = #{delFlag},</if>
             <if test="userId != null">user_id = #{userId},</if>
             <if test="createBy != null">create_by = #{createBy},</if>

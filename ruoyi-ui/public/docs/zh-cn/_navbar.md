@@ -1,6 +1,6 @@
 <!-- _navbar.md -->
 
-* [🐮🐮 Ning's Blog](https://www.cnblogs.com/Ning-Blog/)
+* [🐮🐮 Ning's Post](https://www.cnposts.com/Ning-Post/)
 * [❤️❤️ Ning专栏](https://gitee.com/Ning310975876)
 * Translations
 

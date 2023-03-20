@@ -69,7 +69,7 @@
       <el-table-column label="点赞数量" align="center" prop="likeNum" />
       <el-table-column label="内容" align="center" prop="content" />
       <el-table-column label="评论类型：对人评论，对项目评论，对资源评论" align="center" prop="type" />
-      <el-table-column label="被评论者id，可以是人、项目、资源" align="center" prop="blogId" />
+      <el-table-column label="被评论者id，可以是人、项目、资源" align="center" prop="postId" />
       <el-table-column label="评论者id" align="center" prop="userId" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -115,7 +115,7 @@
                 <span v-show="mes.type=='1'" class="rp">的评论</span>
               </div>
               <div class="op">
-                <span @click="getBlogInfo(mes)" class="blog">查看</span>
+                <span @click="getPostInfo(mes)" class="post">查看</span>
                 <span> | </span>
                 <el-button type="text" @click="handleAdd(mes)" v-hasPermi="['cms:comment:add']">回复</el-button>
                 <span v-show="!isAdmin&&mes.createBy!=name" style="margin-right: 39.43px;"></span>
@@ -152,8 +152,8 @@
         <!-- <el-form-item label="内容" prop="content"> -->
           <el-input v-model="form.content" type="textarea" maxlength="100" show-word-limit :placeholder="toName" />
         <!-- </el-form-item> -->
-        <!-- <el-form-item label="被评论者id，可以是人、项目、资源" prop="blogId">
-          <el-input v-model="form.blogId" placeholder="请输入被评论者id，可以是人、项目、资源" />
+        <!-- <el-form-item label="被评论者id，可以是人、项目、资源" prop="postId">
+          <el-input v-model="form.postId" placeholder="请输入被评论者id，可以是人、项目、资源" />
         </el-form-item>
         <el-form-item label="删除标志" prop="delFlag">
           <el-input v-model="form.delFlag" placeholder="请输入删除标志" />
@@ -211,7 +211,7 @@ export default {
         likeNum: null,
         content: null,
         type: null,
-        blogId: null,
+        postId: null,
         userId: null,
         delFlag: null,
         createBy: null,
@@ -274,7 +274,7 @@ export default {
         likeNum: null,
         content: null,
         type: null,
-        blogId: null,
+        postId: null,
         delFlag: null,
         userId: null,
         createBy: null,
@@ -311,7 +311,7 @@ export default {
         this.form.mainId = mes.id
       }
       this.form.parentId = mes.id
-      this.form.blogId = mes.blogId
+      this.form.postId = mes.postId
       this.form.type = '1'
       this.form.createBy = this.$store.getters.name
       this.toName = "@" + mes.createBy
@@ -366,11 +366,11 @@ export default {
       }, `comment_${new Date().getTime()}.xlsx`)
     },
     // 跳转到评论页
-    getBlogInfo(mes) {
+    getPostInfo(mes) {
       let routeUrl = this.$router.resolve({
-        path: '/cms/main/blog',
+        path: '/cms/main/post',
         query: {
-          id: mes.blogId,
+          id: mes.postId,
           commentId: mes.id
         }
       });
@@ -425,7 +425,7 @@ export default {
     margin-left: 10px;
   }
 
-  .blog {
+  .post {
     color: #349edf;
     margin-left: 10px;
     cursor: pointer;

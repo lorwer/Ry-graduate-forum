@@ -5,42 +5,42 @@
       <el-card style="background-color: rgba(255,255,255,0.9)" class="left-item">
         <div slot="header" class="total">
           <div class="title">
-            <i v-if="selected" class="el-icon-back" @click="updateBlogList"></i>
+            <i v-if="selected" class="el-icon-back" @click="updatePostList"></i>
             <span>{{selectMethod}}</span>
           </div>
           <!-- <span>共 <span style="color: #3a8ee6; font-size: 20px">{{totalcount}}</span> 篇</span> -->
         </div>
-        <el-row type="flex" align="middle" style="flex-wrap: wrap" :gutter="20" v-for="blog in blogList" :key="blog.id"
-          shadow="never" class="blog-content">
+        <el-row type="flex" align="middle" style="flex-wrap: wrap" :gutter="20" v-for="post in postList" :key="post.id"
+          shadow="never" class="post-content">
           <el-col class="img" :xs="24" :sm="6">
-            <el-image lazy :src="blog.blogPic" @click="getBlogInfo(blog.id)"></el-image>
+            <el-image lazy :src="post.postPic" @click="getPostInfo(post.id)"></el-image>
           </el-col>
           <el-col :xs="24" :sm="18" style="padding-left: 10px;padding-right: 10px;margin-bottom: 5px;margin-top: -5px;">
-            <div @click="getBlogInfo(blog.id)">
-              <h3><svg-icon icon-class="Topping" v-show="blog.top==1" /> {{blog.title}}</h3>
+            <div @click="getPostInfo(post.id)">
+              <h3><svg-icon icon-class="Topping" v-show="post.top==1" /> {{post.title}}</h3>
               <div style="margin-bottom: 10px;">
-                  <span style="color: rgba(0, 0, 0, .4);"> {{blog.blogDesc}}</span>
+                  <span style="color: rgba(0, 0, 0, .4);"> {{post.postDesc}}</span>
               </div>
               <div style="margin-bottom: 10px;">
-                <el-tag effect="plain" size="mini" v-for="tag in blog.tags" :key="tag.tagId" type="success">
+                <el-tag effect="plain" size="mini" v-for="tag in post.tags" :key="tag.tagId" type="success">
                   {{tag.tagName}}
                 </el-tag>
               </div>
-              <div class="blog-info">
+              <div class="post-info">
                 <div class="user-info">
                   <i class="el-icon-user"></i>
-                  <span class="header"> {{blog.createBy}}</span>
+                  <span class="header"> {{post.createBy}}</span>
                 </div>
-                <div class="blog-date">
+                <div class="post-date">
                   <i class="el-icon-date"></i>
-                  <span> {{blog.createTime}}</span>
+                  <span> {{post.createTime}}</span>
                 </div>
                 <div>
                   <i class="el-icon-view"></i>
-                  <span> {{blog.views}}</span>
+                  <span> {{post.views}}</span>
                 </div>
-                <div class="blog-type">
-                  <el-tag size="mini" v-for="tag in blog.types" :key="tag.typeId" type="info">
+                <div class="post-type">
+                  <el-tag size="mini" v-for="tag in post.types" :key="tag.typeId" type="info">
                     {{tag.typeName}}
                   </el-tag>
                 </div>
@@ -49,7 +49,7 @@
             </div>
           </el-col>
         </el-row>
-        <pagination v-show="total>0" :total="total" :page.sync="queryParams.pageNum" :limit.sync="queryParams.pageSize" background layout="total, sizes, prev, pager, next, jumper" @pagination="getBlogList"  style="margin-bottom: 30px;float: right;margin-right: 10px;"/>
+        <pagination v-show="total>0" :total="total" :page.sync="queryParams.pageNum" :limit.sync="queryParams.pageSize" background layout="total, sizes, prev, pager, next, jumper" @pagination="getPostList"  style="margin-bottom: 30px;float: right;margin-right: 10px;"/>
       </el-card>
 
     </el-col>
@@ -58,8 +58,8 @@
         <div slot="header" class="attributes">
           <b>分类</b>
         </div>
-        <ul class=" blog-type-ul" style="margin-top: 5px;">
-          <li class=" blog-type-li" v-for="cmsType in typeList" :key="cmsType.typeId" @click="selectType(cmsType)"
+        <ul class=" post-type-ul" style="margin-top: 5px;">
+          <li class=" post-type-li" v-for="cmsType in typeList" :key="cmsType.typeId" @click="selectType(cmsType)"
             :class="cmsType.typeId === typeId? 'activeType':''">
             <div style="display: flex;align-items: center">
               <el-image style="width: 28px;height: 28px; border-radius: 50%; margin-right: 10px" lazy
@@ -70,7 +70,7 @@
               </el-image>
               {{cmsType.typeName}}
             </div>
-            <div>{{cmsType.blogNum}}</div>
+            <div>{{cmsType.postNum}}</div>
           </li>
         </ul>
         <div class="more" @click="dealType">
@@ -90,7 +90,7 @@
             </div>
             <div class="tag">
               {{tag.tagName}}
-              {{tag.blogNum}}
+              {{tag.postNum}}
             </div>
           </div>
         </div>
@@ -103,8 +103,8 @@
         <div slot="header" class="attributes">
           <b>最新推荐</b>
         </div>
-        <div class=" recommend-blog l-text" v-for="blog in recommendList" :key="blog.id" @click="getBlogInfo(blog.id)">
-          <a class="recommend-a">{{blog.title}}</a>
+        <div class=" recommend-post l-text" v-for="post in recommendList" :key="post.id" @click="getPostInfo(post.id)">
+          <a class="recommend-a">{{post.title}}</a>
         </div>
       </el-card>
     </el-col>
@@ -118,12 +118,12 @@
     Loading
   } from 'element-ui';
   import {
-    cmsListBlog,
-    getBlogDetail,
+    cmsListPost,
+    getPostDetail,
     cmsListByTypeId,
     cmsListByTagId,
     cmsListRecommend,
-  } from "@/api/cms/blog";
+  } from "@/api/cms/post";
   export default {
     name: 'cmsIndex',
     data() {
@@ -135,7 +135,7 @@
           pagesize: 8
         },
         intro: '',
-        blogList: [],
+        postList: [],
         typeList: [],
         tagList: [],
         fullTypeList: [],
@@ -187,7 +187,7 @@
       this.$nextTick(function () {
           // 仅在整个视图都被渲染之后才会运行的代码
           this.getTypeList()
-          this.getBlogList();
+          this.getPostList();
           this.getTagList()
           this.getRecommendList()
           let str = '这是我的个人博客、会分享关于编程，开发以及其他方面的一些内容，希望可以对您有所帮助...';
@@ -210,27 +210,27 @@
     },
     methods: {
       /** 获取帖子列表 */
-      getBlogList() {
+      getPostList() {
         let loadingInstance = Loading.service({
           target: ".left-item"
         });
-        cmsListBlog(this.queryParams).then(response => {
-          this.blogList = this.picSrc(response.rows);
+        cmsListPost(this.queryParams).then(response => {
+          this.postList = this.picSrc(response.rows);
           this.total = response.total;
           loadingInstance.close();
         });
       },
       //首图地址修改
-      picSrc(blogList){
-        for (let i = 0; i < blogList.length; i++) {
-          let blogInfo = blogList[i];
-          if (blogInfo.blogPic.length > 0) {
-            blogList[i].blogPic = process.env.VUE_APP_BASE_API + blogInfo.blogPic
+      picSrc(postList){
+        for (let i = 0; i < postList.length; i++) {
+          let postInfo = postList[i];
+          if (postInfo.postPic.length > 0) {
+            postList[i].postPic = process.env.VUE_APP_BASE_API + postInfo.postPic
           }else{
-            blogList[i].blogPic = '/errorImg.jpg'
+            postList[i].postPic = '/errorImg.jpg'
           }
         };
-        return blogList
+        return postList
       },
       // 开始进入主页
       startRead() {
@@ -261,7 +261,7 @@
       },
       // 获取帖子类型列表
       async getTypeList() {
-        getBlogDetail(this.$route.query.id).then(response => {
+        getPostDetail(this.$route.query.id).then(response => {
           for (let i = 0; i < response.types.length; i++) {
             let typeInfo = response.types[i];
             if (typeInfo.typePic.length > 0) {
@@ -277,7 +277,7 @@
       },
       // 获取帖子标签列表
       async getTagList() {
-        getBlogDetail(this.$route.query.id).then(response => {
+        getPostDetail(this.$route.query.id).then(response => {
           const {
             data: res
           } = response;
@@ -286,11 +286,11 @@
         });
       },
       // 跳转到帖子详情页
-      getBlogInfo(blogId) {
+      getPostInfo(postId) {
         let routeUrl = this.$router.resolve({
-          path: '/cms/main/blog',
+          path: '/cms/main/post',
           query: {
-            id: blogId
+            id: postId
           }
         });
         window.open(routeUrl.href, '_blank');
@@ -298,7 +298,7 @@
       // 修改当前页码
       handleCurrentChange(newSize) {
         this.queryInfo.pagenum = newSize
-        this.getBlogList()
+        this.getPostList()
       },
       // 修改当前页大小
       handleSizeChange(newSize) {
@@ -308,7 +308,7 @@
       async selectType(cmsType) {
         this.typeId = cmsType.typeId
         cmsListByTypeId(this.typeId).then(response => {
-          this.blogList = this.picSrc(response.rows);
+          this.postList = this.picSrc(response.rows);
           this.total = response.total;
           // this.totalcount = res.data.totalElements
           this.selectMethod = '分类: ' + cmsType.typeName
@@ -319,7 +319,7 @@
       async selectTag(tag) {
         this.tagId = tag.tagId
         cmsListByTagId(this.tagId).then(response => {
-          this.blogList = this.picSrc(response.rows);
+          this.postList = this.picSrc(response.rows);
           this.total = response.total;
           // this.totalcount = res.data.totalElements
           this.selectMethod = '标签: ' + tag.tagName
@@ -327,12 +327,12 @@
         });
       },
       // 更新帖子列表
-      updateBlogList() {
+      updatePostList() {
         this.selected = false
         this.typeId = -1
         this.tagId = -1
         this.selectMethod = '全部帖子'
-        this.getBlogList()
+        this.getPostList()
       },
       // 得到所有的标签
       async getFullTagList() {
@@ -477,7 +477,7 @@
   }
 
 
-  .blog-type-ul {
+  .post-type-ul {
     padding-left: 10px;
     padding-right: 10px;
     margin-bottom: 0;
@@ -498,11 +498,11 @@
     margin-bottom: 20px;
   }
 
-  .blog-type-li:first-child {
+  .post-type-li:first-child {
     border-top: 1px solid rgba(179, 216, 255, 0.5);
   }
 
-  .blog-type-li {
+  .post-type-li {
     border-bottom: 1px solid rgba(179, 216, 255, 0.5);
   }
 
@@ -517,7 +517,7 @@
     color: #3a8ee6;
   }
 
-  .blog-type-li:hover{
+  .post-type-li:hover{
     background-color: rgba(213, 255, 255, 0.3);
     cursor: pointer;
   }
@@ -596,14 +596,14 @@
     border-right: 6px solid #409eff;
   }
 
-  .blog-type-li {
+  .post-type-li {
     display: flex;
     justify-content: space-between;
     align-items: center;
     line-height: 40px;
   }
 
-  .recommend-blog {
+  .recommend-post {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -650,14 +650,14 @@
     cursor: pointer;
   }
 
-  .blog-content:hover {
+  .post-content:hover {
     border-left: 5px solid #3a8ee6;
     border-right: 5px solid #3a8ee6;
     background-color: rgba(58, 142, 230, 0.3);
     cursor: pointer;
   }
 
-  .blog-content {
+  .post-content {
     padding: 10px;
     height: auto;
     border-bottom: 1px solid rgb(199, 163, 92);
@@ -671,7 +671,7 @@
     flex-shrink: 0;
   }
 
-  .blog-info {
+  .post-info {
     display: flex;
     align-items: center;
     color: rgba(0, 0, 0, .4);
@@ -692,23 +692,23 @@
     font-weight: bold;
   }
 
-  .blog-date {
+  .post-date {
     float: right;
     margin-right: 15px;
   }
 
-  .blog-type {
+  .post-type {
     float: right;
     margin-left: auto;
   }
 
-  .blog-tag {
+  .post-tag {
     float: right;
     margin-left: auto;
   }
 
   @media screen and (max-width: 768px) {
-    .blog-date {
+    .post-date {
       display: none;
     }
 

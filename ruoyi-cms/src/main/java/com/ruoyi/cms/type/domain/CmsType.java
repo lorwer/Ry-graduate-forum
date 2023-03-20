@@ -27,7 +27,7 @@ public class CmsType extends BaseEntity
     private String typePic;
 
     /** 帖子数量 */
-    private int blogNum;
+    private int postNum;
 
     public void setTypeId(Long typeId) 
     {
@@ -57,12 +57,12 @@ public class CmsType extends BaseEntity
         return typePic;
     }
 
-    public int getBlogNum() {
-        return blogNum;
+    public int getPostNum() {
+        return postNum;
     }
 
-    public void setBlogNum(int blogNum) {
-        this.blogNum = blogNum;
+    public void setPostNum(int postNum) {
+        this.postNum = postNum;
     }
 
     @Override
@@ -75,7 +75,7 @@ public class CmsType extends BaseEntity
             .append("updateTime", getUpdateTime())
             .append("typeName", getTypeName())
             .append("typePic", getTypePic())
-                .append("blogNum", getBlogNum())
+                .append("postNum", getPostNum())
             .toString();
     }
 }

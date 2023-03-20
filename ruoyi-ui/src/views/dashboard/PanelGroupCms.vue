@@ -14,15 +14,15 @@
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('blog')">
+      <div class="card-panel" @click="handleSetLineChartData('post')">
         <div class="card-panel-icon-wrapper icon-message">
           <i class="el-icon-document card-panel-icon"></i>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            文章总数
+            帖子总数
           </div>
-          <count-to :start-val="0" :end-val="blog" :duration="3000" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="post" :duration="3000" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -67,7 +67,7 @@ export default {
   data() {
     return{
       views: 0,
-      blog: 0,
+      post: 0,
       comment: 0,
       message: 0,
     }
@@ -79,7 +79,7 @@ export default {
     getTotal(){
       total().then(response => {
         this.views = response.views;
-        this.blog = response.blog;
+        this.post = response.post;
         this.comment = response.comment;
         this.message = response.message;
       });

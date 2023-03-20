@@ -32,14 +32,14 @@
         >
           <svg-icon icon-class="top" />
         </div>
-    </el-backtop>    
+    </el-backtop>
   </el-row>
 </template>
 
 <script>
   import {
     cmsEssayList,
-  } from "@/api/cms/blog";
+  } from "@/api/cms/post";
   export default {
     name: 'essay',
     data() {

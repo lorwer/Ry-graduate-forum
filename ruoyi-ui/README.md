@@ -1,13 +1,13 @@
 <p align="center">
 	<img alt="logo" src="public/favicon.ico">
 </p>
-<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">Blog</h1>
+<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">Post</h1>
 <h4 align="center">基于RuoYi-Vue  v3.8.0平台开发的博客网站</h4>
 <p align="center">
-<a target="_blank" href="https://www.cnblogs.com/Ning-Blog/">
+<a target="_blank" href="https://www.cnposts.com/Ning-Post/">
 <img src="public/博客园-SmileToCode-brightgreen.svg" ></img>
 </a>
-<a target="_blank" href="https://gitee.com/Ning310975876/ruo-yi-vue-blog/blob/master/LICENSE">
+<a target="_blank" href="https://gitee.com/Ning310975876/ruo-yi-vue-forum/blob/master/LICENSE">
 <img src="public/apistatus.svg"></img>
 </a>
 </p>
@@ -23,7 +23,7 @@
 
 ## 快速了解
 
-Blog是基于RuoYi-Vue平台开发  
+Post是基于RuoYi-Vue平台开发  
 RuoYi-Vue是一款基于SpringBoot+Vue的前后端分离极速后台开发框架。
 
 - RuoYi 官网地址：http://ruoyi.vip(opens new window)
@@ -89,7 +89,7 @@ RuoYi-Vue是一款基于SpringBoot+Vue的前后端分离极速后台开发框架
 ## 新增功能
 
 1.  内容管理：管理博客网站所有内容。
-2.  文章管理：管理博客文章内容。
+2.  帖子管理：管理博客帖子内容。
 3.  随笔管理：管理博客随笔内容。
 4.  分类管理：对博客分类的管理。
 5.  标签管理：对博客标签的管理。
@@ -114,10 +114,10 @@ RuoYi-Vue是一款基于SpringBoot+Vue的前后端分离极速后台开发框架
     </tr>
 	<tr>
         <td><img src="public/systemImg/评论.png"/></td>
-        <td><img src="public/systemImg/文章管理.png"/></td>
+        <td><img src="public/systemImg/帖子管理.png"/></td>
     </tr>	 
     <tr>
-        <td><img src="public/systemImg/文章新增修改.png"/></td>
+        <td><img src="public/systemImg/帖子新增修改.png"/></td>
         <td><img src="public/systemImg/资源列表.png"/></td>
     </tr>
 	<tr>
@@ -143,7 +143,7 @@ RuoYi-Vue是一款基于SpringBoot+Vue的前后端分离极速后台开发框架
 
 ```bash
 # 克隆项目
-git https://gitee.com/Ning310975876/ruo-yi-vue-blog.git
+git https://gitee.com/Ning310975876/ruo-yi-vue-forum.git
 
 # 进入项目目录
 cd ruoyi-ui

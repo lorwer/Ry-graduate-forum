@@ -1,13 +1,13 @@
 package com.ruoyi.cms.charts.service.impl;
 /**
- * @program: ruo-yi-vue-blog
+ * @program: ruo-yi-vue-forum
  * @Author: WangNing
  * @Description: 〈〉
  * @Date: 2022/4/27 10:18
  */
 
-import com.ruoyi.cms.blog.domain.CmsBlog;
-import com.ruoyi.cms.blog.mapper.CmsBlogMapper;
+import com.ruoyi.cms.post.domain.CmsPost;
+import com.ruoyi.cms.post.mapper.CmsPostMapper;
 import com.ruoyi.cms.charts.service.IChartService;
 import com.ruoyi.cms.comment.domain.CmsComment;
 import com.ruoyi.cms.comment.mapper.CmsCommentMapper;
@@ -27,7 +27,7 @@ import java.util.List;
 public class ChartServiceImpl implements IChartService {
 
     @Autowired
-    private CmsBlogMapper cmsBlogMapper;
+    private CmsPostMapper cmsPostMapper;
 
     @Autowired
     private CmsCommentMapper cmsCommentMapper;
@@ -36,13 +36,13 @@ public class ChartServiceImpl implements IChartService {
     private CmsMessageMapper cmsMessageMapper;
 
     @Override
-    public List<CmsBlog> selectList(CmsBlog cmsBlog) {
-        return cmsBlogMapper.selectCmsBlogList(cmsBlog);
+    public List<CmsPost> selectList(CmsPost cmsPost) {
+        return cmsPostMapper.selectCmsPostList(cmsPost);
     }
 
     @Override
-    public List<CmsBlog> selectListBetweenCreateTime(CmsBlog cmsBlog,String createTimeBegin,String createTimeEnd) {
-        return cmsBlogMapper.selectCmsBlogListBetweenCreateTime(cmsBlog.getTitle(),cmsBlog.getType(),cmsBlog.getTop(),cmsBlog.getStatus(),createTimeBegin,createTimeEnd,cmsBlog.getCreateBy());
+    public List<CmsPost> selectListBetweenCreateTime(CmsPost cmsPost,String createTimeBegin,String createTimeEnd) {
+        return cmsPostMapper.selectCmsPostListBetweenCreateTime(cmsPost.getTitle(),cmsPost.getType(),cmsPost.getTop(),cmsPost.getStatus(),createTimeBegin,createTimeEnd,cmsPost.getCreateBy());
     }
 
     @Override
